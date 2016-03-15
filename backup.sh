@@ -6,7 +6,7 @@ DOT_FILE=dot
 CONFIG_FILE=config
 
 BACKUP_DIR_LIST=( atom mozilla thunderbird )
-BACKUP_FILE_LIST=( gitconfig msmtprc pwclientrc gnupg ssh xchat2 vim )
+BACKUP_FILE_LIST=( gitconfig msmtprc pwclientrc gnupg ssh xchat2 vim sesame)
 
 # create a backup directory
 cd $HOME
