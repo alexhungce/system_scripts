@@ -8,6 +8,7 @@ DEST_DIR=$HOME
 
 BACKUP_DIR_LIST=( atom mozilla thunderbird )
 BACKUP_FILE_LIST=( gitconfig msmtprc pwclientrc gnupg ssh xchat2 vim sesame )
+BACKUP_CONFIG_LIST=( hexchat )
 
 cd $HOME/$BACKUP_DIR
 
@@ -29,6 +30,11 @@ for file in "${BACKUP_FILE_LIST[@]}"
 do
 	[ -f $DOT_FILE/.${file} ] && cp -f $DOT_FILE/.${file} $DEST_DIR
 	[ -d $DOT_FILE/.${file} ] && cp -r $DOT_FILE/.${file} $DEST_DIR
+done
+
+for file in "${BACKUP_CONFIG_LIST[@]}"
+do
+        [ -d $DOT_FILE/.config/${file} ] && cp -f -r $DOT_FILE/.config/${file} $DEST_DIR/.config
 done
 
 rm -r $DOT_FILE
