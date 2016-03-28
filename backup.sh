@@ -7,6 +7,7 @@ CONFIG_FILE=config
 
 BACKUP_DIR_LIST=( atom mozilla thunderbird )
 BACKUP_FILE_LIST=( gitconfig msmtprc pwclientrc gnupg ssh xchat2 vim sesame )
+BACKUP_CONFIG_LIST=( hexchat )
 
 # create a backup directory
 cd $HOME
@@ -23,13 +24,20 @@ done
 echo ""
 
 # copy hidden files
-echo "copying dot files and directories..."
+echo "creating target directories..."
 [ -e $BACKUP_DIR/$DOT_FILE ] || mkdir $BACKUP_DIR/$DOT_FILE
+[ -e $BACKUP_DIR/$DOT_FILE/.config ] || mkdir $BACKUP_DIR/$DOT_FILE/.config
 
+echo "copying dot files and directories..."
 for file in "${BACKUP_FILE_LIST[@]}"
 do
 	[ -f .${file} ] && cp -f .${file} $BACKUP_DIR/$DOT_FILE
 	[ -d .${file} ] && cp -f -r .${file} $BACKUP_DIR/$DOT_FILE
+done
+
+for file in "${BACKUP_CONFIG_LIST[@]}"
+do
+	[ -d .config/${file} ] && cp -f -r .config/${file} $BACKUP_DIR/$DOT_FILE/.config/
 done
 
 echo ""
