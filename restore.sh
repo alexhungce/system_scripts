@@ -17,7 +17,7 @@ echo "extracting archives..."
 
 for dir in "${BACKUP_DIR_LIST[@]}"
 do
-	tar -xf ${dir}.tar.gz -C $DEST_DIR
+	[ -e ${dir}.tar.gz ] && tar -xf ${dir}.tar.gz -C $DEST_DIR
 done
 
 echo ""
