@@ -14,11 +14,6 @@ else
 	sudo apt-get install -y iasl acpidump vim git git-email gitk openssh-server tree fwts msmtp meld ibus-chewing unp nautilus-dropbox vlc virtualbox p7zip-full screen youtube-dl network-manager-openvpn-gnome hexchat hexchat-indicator pastebinit
 fi
 
-# install Google Chrome
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome-stable_current_amd64.deb
-rm google-chrome-stable_current_amd64.deb
-
 # install Python libs
 sudo apt-get install -y python-launchpadlib python3-launchpadlib
 
@@ -40,3 +35,8 @@ sudo dmidecode -t system | grep VirtualBox >> /dev/null
 if [ $? != 0 ] ; then
 	sudo apt-get install -y ubuntu-restricted-extras
 fi
+
+# install Google Chrome
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+rm google-chrome-stable_current_amd64.deb
