@@ -31,6 +31,10 @@ git clone https://github.com/alexhungce/source_scripts.git
 git clone https://github.com/alexhungce/system_scripts.git
 git clone https://github.com/alexhungce/script-fwts.git
 
+# create "Shared" directory for VMs
+cd $HOME
+mkdir Shared
+
 # skip restricted-extra for VM
 sudo dmidecode -t system | grep VirtualBox >> /dev/null
 if [ $? != 0 ] ; then
