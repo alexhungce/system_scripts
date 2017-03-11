@@ -7,7 +7,7 @@ CONFIG_FILE=config
 DEST_DIR=$HOME
 
 BACKUP_DIR_LIST=( atom mozilla thunderbird )
-BACKUP_FILE_LIST=( gitconfig msmtprc pwclientrc gnupg ssh vim sesame vimrc )
+BACKUP_FILE_LIST=( gitconfig msmtprc pwclientrc gnupg ssh vim sesame vimrc bash_aliases )
 BACKUP_CONFIG_LIST=( hexchat )
 
 cd $HOME/$BACKUP_DIR
