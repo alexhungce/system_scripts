@@ -30,15 +30,15 @@ git clone https://github.com/alexhungce/script-fwts.git
 cd $HOME
 mkdir Shared
 
+# disable crash report / apport
+sudo rm /var/crash/*
+sudo sed -i -e s/^enabled\=1$/enabled\=0/ /etc/default/apport
+
 # skip restricted-extra for VM
 sudo dmidecode -t system | grep VirtualBox >> /dev/null
 if [ $? != 0 ] ; then
 	sudo apt-get install -y ubuntu-restricted-extras
 fi
-
-# disable crash report / apport
-sudo rm /var/crash/*
-sudo sed -i -e s/^enabled\=1$/enabled\=0/ /etc/default/apport
 
 # install Google Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
