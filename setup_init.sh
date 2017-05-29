@@ -6,12 +6,12 @@ SOURCE_DIRECTORY=${1:-'src'}
 
 sudo apt-get update
 
-# install different packages for VM
-sudo dmidecode -t system | grep VirtualBox >> /dev/null
-if [ $? = 0 ] ; then
-	sudo apt install -y acpica-tools vim git git-email gitk openssh-server tree fwts msmtp meld ibus-chewing unp p7zip-full network-manager-openvpn-gnome pastebinit
-else
-	sudo apt install -y acpica-tools vim git git-email gitk openssh-server tree fwts msmtp meld ibus-chewing unp nautilus-dropbox vlc virtualbox p7zip-full youtube-dl network-manager-openvpn-gnome hexchat hexchat-indicator pastebinit powertop
+sudo apt install -y acpica-tools vim git git-email gitk openssh-server tree fwts msmtp meld ibus-chewing unp p7zip-full network-manager-openvpn-gnome pastebinit
+
+# install different packages if not in VirtualBox
+sudo dmidecode -t system | grep -n VirtualBox
+if [ $? != 0 ] ; then
+	sudo apt install -y nautilus-dropbox vlc virtualbox youtube-dl hexchat hexchat-indicator powertop
 fi
 
 # install Python libs
