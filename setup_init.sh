@@ -9,9 +9,9 @@ sudo apt-get update
 # install different packages for VM
 sudo dmidecode -t system | grep VirtualBox >> /dev/null
 if [ $? = 0 ] ; then
-	sudo apt-get install -y iasl acpidump vim git git-email gitk openssh-server tree fwts msmtp meld ibus-chewing unp p7zip-full screen network-manager-openvpn-gnome hexchat hexchat-indicator pastebinit
+	sudo apt install -y acpica-tools vim git git-email gitk openssh-server tree fwts msmtp meld ibus-chewing unp p7zip-full network-manager-openvpn-gnome pastebinit
 else
-	sudo apt-get install -y iasl acpidump vim git git-email gitk openssh-server tree fwts msmtp meld ibus-chewing unp nautilus-dropbox vlc virtualbox p7zip-full screen youtube-dl network-manager-openvpn-gnome hexchat hexchat-indicator pastebinit
+	sudo apt install -y acpica-tools vim git git-email gitk openssh-server tree fwts msmtp meld ibus-chewing unp nautilus-dropbox vlc virtualbox p7zip-full youtube-dl network-manager-openvpn-gnome hexchat hexchat-indicator pastebinit powertop
 fi
 
 # install Python libs
