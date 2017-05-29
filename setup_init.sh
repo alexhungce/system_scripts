@@ -36,6 +36,10 @@ if [ $? != 0 ] ; then
 	sudo apt-get install -y ubuntu-restricted-extras
 fi
 
+# disable crash report / apport
+sudo rm /var/crash/*
+sudo sed -i -e s/^enabled\=1$/enabled\=0/ /etc/default/apport
+
 # install Google Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
