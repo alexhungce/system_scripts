@@ -4,7 +4,7 @@ shopt -s -o nounset
 # assign default directories if there aren't any
 SOURCE_DIRECTORY=${1:-'src'}
 
-sudo apt-get update
+sudo apt update
 
 sudo apt install -y acpica-tools vim git git-email gitk openssh-server tree fwts msmtp meld ibus-chewing unp p7zip-full network-manager-openvpn-gnome pastebinit
 
@@ -15,7 +15,7 @@ if [ $? != 0 ] ; then
 fi
 
 # install Python libs
-sudo apt-get install -y python-launchpadlib python3-launchpadlib
+sudo apt install -y python-launchpadlib python3-launchpadlib
 
 cd $HOME
 [ -e $SOURCE_DIRECTORY ] || mkdir $SOURCE_DIRECTORY
@@ -37,7 +37,7 @@ sudo sed -i -e s/^enabled\=1$/enabled\=0/ /etc/default/apport
 # skip restricted-extra for VM
 sudo dmidecode -t system | grep VirtualBox >> /dev/null
 if [ $? != 0 ] ; then
-	sudo apt-get install -y ubuntu-restricted-extras
+	sudo apt install -y ubuntu-restricted-extras
 fi
 
 # install Google Chrome
