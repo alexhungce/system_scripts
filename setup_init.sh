@@ -8,12 +8,6 @@ sudo apt update
 
 sudo apt install -y acpica-tools vim git git-email gitk openssh-server tree fwts msmtp meld ibus-chewing unp p7zip-full network-manager-openvpn-gnome pastebinit
 
-# install different packages if not in VirtualBox
-sudo dmidecode -t system | grep -n VirtualBox
-if [ $? != 0 ] ; then
-	sudo apt install -y nautilus-dropbox vlc virtualbox youtube-dl hexchat hexchat-indicator powertop
-fi
-
 # install Python libs
 sudo apt install -y python-launchpadlib python3-launchpadlib
 
@@ -34,10 +28,10 @@ mkdir Shared
 sudo rm /var/crash/*
 sudo sed -i -e s/^enabled\=1$/enabled\=0/ /etc/default/apport
 
-# skip restricted-extra for VM
-sudo dmidecode -t system | grep VirtualBox >> /dev/null
+# install different packages if not in VirtualBox
+sudo dmidecode -t system | grep -n VirtualBox
 if [ $? != 0 ] ; then
-	sudo apt install -y ubuntu-restricted-extras
+	sudo apt install -y nautilus-dropbox vlc virtualbox youtube-dl hexchat hexchat-indicator powertop ubuntu-restricted-extras
 fi
 
 # install Google Chrome
