@@ -40,5 +40,5 @@ sudo apt purge chromium-browser
 # install Google Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
-sudo apt install -f
+sudo apt install -f -y
 rm google-chrome-stable_current_amd64.deb
