@@ -6,7 +6,7 @@ SOURCE_DIRECTORY=${1:-'src'}
 
 sudo apt update
 
-sudo apt install -y acpica-tools vim git git-email gitk openssh-server tree fwts msmtp meld ibus-chewing unp p7zip-full network-manager-openvpn-gnome pastebinit
+sudo apt install -y acpica-tools vim git git-email gitk openssh-server tree fwts msmtp meld ibus-chewing unp p7zip-full network-manager-openvpn-gnome pastebinit firefox
 
 # install Python libs
 sudo apt install -y python-launchpadlib python3-launchpadlib
@@ -33,6 +33,9 @@ sudo dmidecode -t system | grep -n VirtualBox
 if [ $? != 0 ] ; then
 	sudo apt install -y nautilus-dropbox vlc virtualbox youtube-dl hexchat hexchat-indicator powertop ubuntu-restricted-extras acpi
 fi
+
+# remove chromium in some flavours
+sudo apt purge chromium-browser
 
 # install Google Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
