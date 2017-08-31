@@ -4,7 +4,7 @@ shopt -s -o nounset
 # assign default directories if there aren't any
 SOURCE_DIRECTORY=${1:-'src'}
 
-sudo apt update
+sudo apt update && sudo apt -y upgrade
 
 sudo apt install -y acpica-tools vim git git-email gitk openssh-server tree fwts msmtp meld ibus-chewing unp p7zip-full network-manager-openvpn-gnome pastebinit firefox
 
