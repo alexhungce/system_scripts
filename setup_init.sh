@@ -35,7 +35,7 @@ if [ $? != 0 ] ; then
 fi
 
 # remove chromium in some flavours
-sudo apt purge chromium-browser
+sudo apt purge -y chromium-browser
 
 # install Google Chrome
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
