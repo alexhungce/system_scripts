@@ -17,7 +17,7 @@ cd $HOME
 echo "creating archives..."
 
 for dir in "${BACKUP_DIR_LIST[@]}"
-do 
+do
 	tar -zcf $BACKUP_DIR/${dir}.tar.gz .${dir}
 done
 
