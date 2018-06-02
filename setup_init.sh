@@ -18,9 +18,9 @@ cd $HOME
 cd $SOURCE_DIRECTORY
 
 # get source code
-git clone https://github.com/alexhungce/source_scripts.git
-git clone https://github.com/alexhungce/system_scripts.git
-git clone https://github.com/alexhungce/script-fwts.git
+[ -e source_scripts ] || git clone https://github.com/alexhungce/source_scripts.git
+[ -e system_scripts ] || git clone https://github.com/alexhungce/system_scripts.git
+[ -e script-fwts ] || git clone https://github.com/alexhungce/script-fwts.git
 
 # create "Shared" directory for VMs
 cd $HOME
