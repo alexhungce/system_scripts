@@ -54,6 +54,6 @@ echo ""
 cd $BACKUP_DIR
 tar -zcf $DOT_FILE.tar.gz $DOT_FILE
 tar -zcf $CONFIG_FILE.tar.gz $CONFIG_FILE
-rm -r $DOT_FILE
-rm -r $CONFIG_FILE
+rm -rf $DOT_FILE
+rm -rf $CONFIG_FILE
 
