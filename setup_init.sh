@@ -49,3 +49,9 @@ fi
 
 # install applications for Gnome DE
 sudo apt install -y gnome-tweaks chrome-gnome-shell
+
+# setup for tilix
+if ! which tilix > /dev/null ; then
+	sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
+	wget -qO $HOME"/.config/tilix/schemes/argonaut.json" https://git.io/v7QV5
+fi
