@@ -46,3 +46,6 @@ if ! which google-chrome > /dev/null ; then
 	sudo apt install -f -y
 	rm google-chrome-stable_current_amd64.deb
 fi
+
+# install applications for Gnome DE
+sudo apt install -y gnome-tweaks chrome-gnome-shell
