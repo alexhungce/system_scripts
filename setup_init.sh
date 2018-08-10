@@ -36,8 +36,8 @@ if [ $? != 0 ] ; then
 	sudo apt install -y nautilus-dropbox vlc youtube-dl hexchat hexchat-indicator powertop ubuntu-restricted-extras acpi
 fi
 
-# remove chromium in some flavours
-sudo apt purge -y chromium-browser
+# remove pre-installed applications
+sudo apt purge -y chromium-browser rhythmbox
 
 # install Google Chrome
 if ! which google-chrome > /dev/null ; then
