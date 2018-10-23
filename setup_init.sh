@@ -34,7 +34,9 @@ sudo sed -i -e s/^enabled\=1$/enabled\=0/ /etc/default/apport
 # install different packages if not in VirtualBox
 sudo dmidecode -t system | grep -n VirtualBox
 if [ $? != 0 ] ; then
-	sudo apt install -y nautilus-dropbox vlc youtube-dl hexchat hexchat-indicator powertop ubuntu-restricted-extras acpi deluge
+	sudo apt install -y nautilus-dropbox vlc youtube-dl acpi deluge \
+			    hexchat hexchat-indicator powertop \
+			    ubuntu-restricted-extras
 fi
 
 # remove pre-installed applications
