@@ -34,11 +34,11 @@ sudo sed -i -e s/^enabled\=1$/enabled\=0/ /etc/default/apport
 # install different packages if not in VirtualBox
 sudo dmidecode -t system | grep -n VirtualBox
 if [ $? != 0 ] ; then
-	sudo apt install -y nautilus-dropbox vlc youtube-dl hexchat hexchat-indicator powertop ubuntu-restricted-extras acpi
+	sudo apt install -y nautilus-dropbox vlc youtube-dl hexchat hexchat-indicator powertop ubuntu-restricted-extras acpi deluge
 fi
 
 # remove pre-installed applications
-sudo apt purge -y chromium-browser rhythmbox
+sudo apt purge -y chromium-browser rhythmbox transmission-common
 
 # install Google Chrome
 if ! which google-chrome > /dev/null ; then
