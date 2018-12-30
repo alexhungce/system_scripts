@@ -37,7 +37,7 @@ do
         [ -d $DOT_FILE/.config/${file} ] && cp -f -r $DOT_FILE/.config/${file} $DEST_DIR/.config
 done
 
-rm -r $DOT_FILE
+rm -rf $DOT_FILE
 
 echo ""
 
@@ -68,4 +68,4 @@ if [ -e /usr/share/X11/xorg.conf.d/40-libinput.conf ] ; then
 fi
 
 
-rm -r $CONFIG_FILE
+rm -rf  $CONFIG_FILE
