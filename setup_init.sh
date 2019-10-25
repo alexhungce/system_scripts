@@ -8,8 +8,7 @@ sudo apt update && sudo apt -y upgrade
 
 sudo apt install -y acpica-tools vim git git-email gitk openssh-server tree \
 		    fwts msmtp meld ibus-chewing unp p7zip-full pastebinit \
-		    network-manager-openvpn-gnome firefox thunderbird tilix \
-		    flameshot
+		    network-manager-openvpn-gnome firefox thunderbird tilix
 
 # install Python libs
 sudo apt install -y python-launchpadlib python3-launchpadlib
