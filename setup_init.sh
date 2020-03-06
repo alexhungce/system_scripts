@@ -31,6 +31,9 @@ mkdir Shared
 sudo rm /var/crash/*
 sudo sed -i -e s/^enabled\=1$/enabled\=0/ /etc/default/apport
 
+# blacklist webcam for security
+echo "blacklist uvcvideo" | sudo tee -a /etc/modprobe.d/blacklist.conf
+
 # install different packages if not in VirtualBox
 sudo dmidecode -t system | grep -n VirtualBox
 if [ $? != 0 ] ; then
