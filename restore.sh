@@ -51,6 +51,7 @@ sudo cp $CONFIG_FILE/50-marblemouse.conf /usr/share/X11/xorg.conf.d/
 
 # backup tilix config
 dconf load /com/gexperts/Tilix/ < $CONFIG_FILE/tilix.dconf
+wget -qO $HOME"/.config/tilix/schemes/argonaut.json" https://git.io/v7QV5
 
 if [ -e /usr/share/X11/xorg.conf.d/40-libinput.conf ] ; then
 	if ! grep -q "Marble Mouse" /usr/share/X11/xorg.conf.d/40-libinput.conf ; then
