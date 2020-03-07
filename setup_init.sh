@@ -39,7 +39,7 @@ sudo dmidecode -t system | grep -n VirtualBox
 if [ $? != 0 ] ; then
 	sudo apt install -y nautilus-dropbox vlc youtube-dl acpi deluge \
 			    hexchat hexchat-indicator powertop \
-			    ubuntu-restricted-extras steam
+			    ubuntu-restricted-addons steam
 fi
 
 # remove pre-installed applications
