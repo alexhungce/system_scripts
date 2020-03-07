@@ -65,3 +65,5 @@ sudo apt install -y gnome-tweaks chrome-gnome-shell
 if which tilix > /dev/null ; then
 	sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
 fi
+
+sudo apt -y autoremove
