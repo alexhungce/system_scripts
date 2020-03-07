@@ -12,7 +12,7 @@ sudo apt install -y acpica-tools vim git git-email gitk openssh-server tree \
 		    zim curl
 
 # install Python libs
-sudo apt install -y python-launchpadlib python3-launchpadlib
+sudo apt install -y python3-launchpadlib
 
 cd $HOME
 [ -e $SOURCE_DIRECTORY ] || mkdir $SOURCE_DIRECTORY
