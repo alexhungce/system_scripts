@@ -9,7 +9,7 @@ sudo apt update && sudo apt -y upgrade
 sudo apt install -y acpica-tools vim git git-email gitk openssh-server tree \
 		    fwts msmtp meld ibus-chewing unp p7zip-full pastebinit \
 		    network-manager-openvpn-gnome firefox thunderbird tilix \
-		    zim
+		    zim curl
 
 # install Python libs
 sudo apt install -y python-launchpadlib python3-launchpadlib
@@ -52,6 +52,11 @@ if ! which google-chrome > /dev/null ; then
 	sudo apt install -f -y
 	rm google-chrome-stable_current_amd64.deb
 fi
+
+# install spotify
+curl -sS https://download.spotify.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+sudo apt update && sudo apt install spotify-client
 
 # install applications for Gnome DE
 sudo apt install -y gnome-tweaks chrome-gnome-shell
