@@ -25,7 +25,7 @@ cd $SOURCE_DIRECTORY
 
 # create "Shared" directory for VMs
 cd $HOME
-mkdir Shared
+[ -e Shared ] || mkdir Shared
 
 # disable crash report / apport
 sudo rm /var/crash/*
