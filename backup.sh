@@ -31,13 +31,13 @@ echo "creating target directories..."
 echo "copying dot files and directories..."
 for file in "${BACKUP_FILE_LIST[@]}"
 do
-	[ -f .${file} ] && cp -f .${file} $BACKUP_DIR/$DOT_FILE
-	[ -d .${file} ] && cp -f -r .${file} $BACKUP_DIR/$DOT_FILE
+	[ -f .${file} ] && cp -fp .${file} $BACKUP_DIR/$DOT_FILE
+	[ -d .${file} ] && cp -frp .${file} $BACKUP_DIR/$DOT_FILE
 done
 
 for file in "${BACKUP_CONFIG_LIST[@]}"
 do
-	[ -d .config/${file} ] && cp -f -r .config/${file} $BACKUP_DIR/$DOT_FILE/.config/
+	[ -d .config/${file} ] && cp -frp .config/${file} $BACKUP_DIR/$DOT_FILE/.config/
 done
 
 echo ""
@@ -45,8 +45,8 @@ echo ""
 # copy config files
 echo "copying config files..."
 [ -e $BACKUP_DIR//$CONFIG_FILE ] || mkdir $BACKUP_DIR//$CONFIG_FILE
-cp -f /usr/bin/pwclient $BACKUP_DIR/$CONFIG_FILE/
-cp -f /usr/share/X11/xorg.conf.d/50-marblemouse.conf $BACKUP_DIR/$CONFIG_FILE/
+cp -fp /usr/bin/pwclient $BACKUP_DIR/$CONFIG_FILE/
+cp -fp /usr/share/X11/xorg.conf.d/50-marblemouse.conf $BACKUP_DIR/$CONFIG_FILE/
 # backup tilix config
 dconf dump /com/gexperts/Tilix/ > $BACKUP_DIR/$CONFIG_FILE/tilix.dconf
 
