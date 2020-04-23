@@ -68,4 +68,5 @@ fi
 
 sudo apt -y autoremove
 
+# disable natural scrolling
 gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
