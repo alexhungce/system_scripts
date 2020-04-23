@@ -43,7 +43,7 @@ if [ $? != 0 ] ; then
 fi
 
 # remove pre-installed applications
-sudo apt purge -y chromium-browser rhythmbox transmission-common
+sudo apt purge -y chromium-browser rhythmbox transmission-common aisleriot gnome-mahjongg gnome-mines gnome-sudoku
 
 # install Google Chrome
 if ! which google-chrome > /dev/null ; then
