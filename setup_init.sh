@@ -4,6 +4,8 @@ shopt -s -o nounset
 # assign default directories if there aren't any
 SOURCE_DIRECTORY=${1:-'src'}
 
+sudo sed -i s/ca.archive.ubuntu.com/mirror.it.ubc.ca/g /etc/apt/sources.list
+
 sudo apt update && sudo apt -y upgrade
 
 sudo apt install -y acpica-tools vim git git-email gitk openssh-server tree \
