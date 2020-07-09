@@ -8,7 +8,7 @@ CONFIG_FILE=config
 BACKUP_DIR_LIST=( atom mozilla thunderbird )
 BACKUP_FILE_LIST=( gitconfig msmtprc pwclientrc gnupg ssh vim sesame vimrc bash_aliases \
 		   bash_servers bash_acpiops bash_fwtsops bash_kernelops bash_misc )
-BACKUP_CONFIG_LIST=( Atom hexchat tilix )
+BACKUP_CONFIG_LIST=( Atom tilix )
 
 # create a backup directory
 cd $HOME

@@ -42,8 +42,7 @@ echo "blacklist uvcvideo" | sudo tee -a /etc/modprobe.d/blacklist.conf
 sudo dmidecode -t system | grep -n VirtualBox
 if [ $? != 0 ] ; then
 	sudo apt install -y nautilus-dropbox vlc youtube-dl acpi deluge \
-			    hexchat hexchat-indicator powertop \
-			    ubuntu-restricted-addons steam
+			    powertop ubuntu-restricted-addons steam
 fi
 
 # remove pre-installed applications
