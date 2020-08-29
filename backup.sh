@@ -56,6 +56,7 @@ echo ""
 
 # compress hidden and config directories
 cd $BACKUP_DIR
+ls ~/Downloads/bug-logs > bugs.lst
 tar -zcf $DOT_FILE.tar.gz $DOT_FILE
 tar -zcf $CONFIG_FILE.tar.gz $CONFIG_FILE
 rm -rf $DOT_FILE
