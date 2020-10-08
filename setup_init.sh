@@ -14,7 +14,8 @@ sudo apt update && sudo apt -y upgrade
 sudo apt install -y acpica-tools vim git git-email gitk openssh-server tree \
 		    fwts msmtp meld ibus-chewing unp p7zip-full pastebinit \
 		    network-manager-openvpn-gnome firefox thunderbird tilix \
-		    zim curl numix-gtk-theme numix-icon-theme-circle
+		    zim curl numix-gtk-theme numix-icon-theme-circle \
+		    shellcheck
 
 # install Python libs
 sudo apt install -y python3-launchpadlib
