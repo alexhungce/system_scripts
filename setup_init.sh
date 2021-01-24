@@ -43,7 +43,8 @@ echo "blacklist uvcvideo" | sudo tee -a /etc/modprobe.d/blacklist.conf
 sudo dmidecode -t system | grep -n VirtualBox
 if [ $? != 0 ] ; then
 	sudo apt install -y nautilus-dropbox vlc youtube-dl acpi deluge \
-			    powertop ubuntu-restricted-addons steam
+			    powertop ubuntu-restricted-addons steam \
+			    avahi-daemon
 
 	# install spotify
 	curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | sudo apt-key add -
