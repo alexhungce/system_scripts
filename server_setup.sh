@@ -33,3 +33,6 @@ sudo sed -i -e s/^enabled\=1$/enabled\=0/ /etc/default/apport
 echo "blacklist uvcvideo" | sudo tee -a /etc/modprobe.d/blacklist.conf
 
 sudo apt -y autoremove
+
+# for faster boot time
+sudo systemctl mask NetworkManager-wait-online.service
