@@ -18,7 +18,7 @@ sudo apt install -y acpica-tools vim git git-email gitk openssh-server tree \
 		    shellcheck screen
 
 # install Python libs
-sudo apt install -y python3-launchpadlib
+sudo apt install -y python3-launchpadlib python3-yapf
 
 cd $HOME
 [ -e $SOURCE_DIRECTORY ] || mkdir $SOURCE_DIRECTORY
