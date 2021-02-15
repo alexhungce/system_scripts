@@ -12,11 +12,8 @@ sudo sed -i '4,20s/# deb-src/deb-src/' /etc/apt/sources.list
 sudo apt update && sudo apt -y upgrade
 
 sudo apt install -y acpica-tools vim git git-email openssh-server tree \
-		    powertop msmtp meld unp p7zip-full pastebinit curl \
+		    powertop msmtp unp p7zip-full pastebinit curl \
 		    shellcheck screen avahi-daemon
-
-# install Python libs
-sudo apt install -y python3-launchpadlib
 
 cd $HOME
 [ -e $SOURCE_DIRECTORY ] || (mkdir $SOURCE_DIRECTORY && cd $SOURCE_DIRECTORY)
