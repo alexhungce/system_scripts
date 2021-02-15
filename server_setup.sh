@@ -16,7 +16,8 @@ sudo apt install -y acpica-tools vim git git-email openssh-server tree \
 		    shellcheck screen avahi-daemon
 
 cd $HOME
-[ -e $SOURCE_DIRECTORY ] || (mkdir $SOURCE_DIRECTORY && cd $SOURCE_DIRECTORY)
+[ -e $SOURCE_DIRECTORY ] || mkdir $SOURCE_DIRECTORY
+cd $SOURCE_DIRECTORY
 
 # get source code
 [ -e source_scripts ] || git clone https://github.com/alexhungce/source_scripts.git
