@@ -34,3 +34,13 @@ sudo apt -y autoremove
 
 # for faster boot time
 sudo systemctl mask NetworkManager-wait-online.service
+
+# for Raspberry Pi
+if grep -q Raspberry /proc/cpuinfo ; then
+	# overclock
+	if [ -f /boot/firmware/usercfg.txt ] ; then
+		echo -e "\n[pi4]\nover_voltage=6\narm_freq=2147" | sudo tee -a /boot/firmware/usercfg.txt
+	else
+		echo -e "\n[pi4]\nover_voltage=6\narm_freq=2147" | sudo tee -a /boot/firmware/config.txt
+	fi
+fi
