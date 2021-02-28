@@ -15,7 +15,8 @@ sudo apt install -y acpica-tools vim git git-email gitk openssh-server tree \
 		    fwts msmtp meld ibus-chewing unp p7zip-full pastebinit \
 		    network-manager-openvpn-gnome firefox thunderbird tilix \
 		    zim curl numix-gtk-theme numix-icon-theme-circle \
-		    shellcheck screen docker.io
+		    shellcheck linux-tools-generic linux-tools-`uname -r` \
+		    screen docker.io
 
 sudo usermod -aG docker $USER
 

@@ -13,7 +13,8 @@ sudo apt update && sudo apt -y upgrade
 
 sudo apt install -y acpica-tools vim git git-email openssh-server tree \
 		    powertop msmtp unp p7zip-full pastebinit curl \
-		    shellcheck screen avahi-daemon docker.io
+		    shellcheck linux-tools-generic linux-tools-`uname -r` \
+		    screen avahi-daemon docker.io
 
 sudo usermod -aG docker $USER
 
