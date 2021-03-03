@@ -23,6 +23,9 @@ sudo usermod -aG docker $USER
 # install Python libs
 sudo apt install -y python3-launchpadlib python3-yapf
 
+# install multipass
+sudo snap install multipass
+
 cd $HOME
 [ -e $SOURCE_DIRECTORY ] || mkdir $SOURCE_DIRECTORY
 cd $SOURCE_DIRECTORY

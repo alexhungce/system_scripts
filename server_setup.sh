@@ -18,6 +18,9 @@ sudo apt install -y acpica-tools vim git git-email openssh-server tree \
 
 sudo usermod -aG docker $USER
 
+# install multipass
+sudo snap install multipass
+
 cd $HOME
 [ -e $SOURCE_DIRECTORY ] || mkdir $SOURCE_DIRECTORY
 cd $SOURCE_DIRECTORY
