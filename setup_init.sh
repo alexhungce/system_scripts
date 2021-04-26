@@ -16,7 +16,7 @@ sudo apt install -y acpica-tools vim git git-email gitk openssh-server tree \
 		    network-manager-openvpn-gnome firefox thunderbird tilix \
 		    zim curl numix-gtk-theme numix-icon-theme-circle \
 		    shellcheck linux-tools-generic linux-tools-`uname -r` \
-		    screen docker.io
+		    screen docker.io preload
 
 sudo usermod -aG docker $USER
 
