@@ -46,7 +46,7 @@ echo ""
 echo "copying config files..."
 tar -xf $CONFIG_FILE.tar.gz
 sudo cp $CONFIG_FILE/pwclient /usr/bin/  # patchwork
-sudo cp $CONFIG_FILE/get_lplogs.py /usr/bin/
+sudo cp $CONFIG_FILE/hwe_bug_ops.py /usr/bin/
 
 # Logitech Marble mouse
 sudo cp $CONFIG_FILE/50-marblemouse.conf /usr/share/X11/xorg.conf.d/
