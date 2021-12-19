@@ -58,6 +58,10 @@ fi
 sudo apt purge -y chromium-browser rhythmbox transmission-common aisleriot \
 		  gnome-mahjongg gnome-mines gnome-sudoku totem
 
+
+# remove firefox (snap)
+sudo snap remove firefox
+
 # install Google Chrome
 if ! which google-chrome > /dev/null ; then
 	wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
