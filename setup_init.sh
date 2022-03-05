@@ -88,5 +88,9 @@ sudo apt -y autoremove
 # disable natural scrolling
 gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
 
+# hide desktop icons
+gsettings set org.gnome.shell.extensions.desktop-icons show-home false
+gsettings set org.gnome.shell.extensions.desktop-icons show-trash false
+
 # for faster boot time
 sudo systemctl mask NetworkManager-wait-online.service
