@@ -8,7 +8,8 @@ DEST_DIR=$HOME
 
 BACKUP_DIR_LIST=( atom mozilla thunderbird )
 BACKUP_FILE_LIST=( gitconfig msmtprc pwclientrc gnupg ssh vim sesame vimrc lnxpromote \
-		   bash_aliases bash_servers bash_acpiops bash_fwtsops bash_kernelops bash_misc )
+		   bash_aliases bash_servers bash_acpiops bash_fwtsops bash_kernelops \
+		   bash_misc bash_igtops )
 BACKUP_CONFIG_LIST=( Atom tilix zim )
 
 cd $HOME/$BACKUP_DIR
@@ -46,7 +47,6 @@ echo ""
 echo "copying config files..."
 tar -xf $CONFIG_FILE.tar.gz
 sudo cp $CONFIG_FILE/pwclient /usr/bin/  # patchwork
-sudo cp $CONFIG_FILE/hwe_bug_ops.py /usr/bin/
 
 # Logitech Marble mouse
 sudo cp $CONFIG_FILE/50-marblemouse.conf /usr/share/X11/xorg.conf.d/
