@@ -7,7 +7,8 @@ CONFIG_FILE=config
 
 BACKUP_DIR_LIST=( atom mozilla thunderbird )
 BACKUP_FILE_LIST=( gitconfig msmtprc pwclientrc gnupg ssh vim sesame vimrc lnxpromote \
-		   bash_aliases bash_servers bash_acpiops bash_fwtsops bash_kernelops bash_misc )
+		   bash_aliases bash_servers bash_acpiops bash_fwtsops bash_kernelops \
+		   bash_misc bash_igtops )
 BACKUP_CONFIG_LIST=( Atom tilix zim )
 
 # create a backup directory
@@ -47,8 +48,6 @@ echo ""
 echo "copying config files..."
 [ -e $BACKUP_DIR//$CONFIG_FILE ] || mkdir $BACKUP_DIR//$CONFIG_FILE
 cp -fp /usr/bin/pwclient $BACKUP_DIR/$CONFIG_FILE/
-cp -fp /usr/bin/get_lplogs.py $BACKUP_DIR/$CONFIG_FILE/
-cp -fp /usr/bin/hwe_bug_ops.py $BACKUP_DIR/$CONFIG_FILE/
 cp -fp /usr/share/X11/xorg.conf.d/50-marblemouse.conf $BACKUP_DIR/$CONFIG_FILE/
 # backup tilix config
 dconf dump /com/gexperts/Tilix/ > $BACKUP_DIR/$CONFIG_FILE/tilix.dconf
@@ -57,7 +56,6 @@ echo ""
 
 # compress hidden and config directories
 cd $BACKUP_DIR
-ls ~/Downloads/bug-logs > bugs.lst
 tar -zcf $DOT_FILE.tar.gz $DOT_FILE
 tar -zcf $CONFIG_FILE.tar.gz $CONFIG_FILE
 rm -rf $DOT_FILE
