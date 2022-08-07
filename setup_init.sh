@@ -13,7 +13,7 @@ sudo apt update && sudo apt -y upgrade
 
 sudo apt install -y acpica-tools vim git git-email gitk openssh-server tree \
 		    meld ibus-chewing unp p7zip-full pastebinit screen preload \
-		    network-manager-openvpn-gnome thunderbird tilix \
+		    network-manager-openvpn-gnome thunderbird tilix htop \
 		    zim curl numix-gtk-theme numix-icon-theme-circle \
 		    shellcheck linux-tools-generic linux-tools-`uname -r` \
 		    openconnect gnome-shell-extensions
