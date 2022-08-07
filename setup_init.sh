@@ -12,16 +12,11 @@ sudo sed -i '4,20s/# deb-src/deb-src/' /etc/apt/sources.list
 sudo apt update && sudo apt -y upgrade
 
 sudo apt install -y acpica-tools vim git git-email gitk openssh-server tree \
-		    fwts msmtp meld ibus-chewing unp p7zip-full pastebinit \
-		    network-manager-openvpn-gnome firefox thunderbird tilix \
+		    meld ibus-chewing unp p7zip-full pastebinit screen preload \
+		    network-manager-openvpn-gnome thunderbird tilix \
 		    zim curl numix-gtk-theme numix-icon-theme-circle \
 		    shellcheck linux-tools-generic linux-tools-`uname -r` \
-		    screen docker.io preload openconnect
-
-sudo usermod -aG docker $USER
-
-# install Python libs
-sudo apt install -y python3-launchpadlib python3-yapf
+		    openconnect gnome-shell-extensions
 
 # install multipass
 sudo snap install multipass
@@ -49,15 +44,13 @@ echo "blacklist uvcvideo" | sudo tee -a /etc/modprobe.d/blacklist.conf
 sudo dmidecode -t system | grep -n VirtualBox
 if [ $? != 0 ] ; then
 	sudo apt install -y nautilus-dropbox vlc youtube-dl acpi deluge \
-			    powertop ubuntu-restricted-addons steam \
-			    avahi-daemon
+			    powertop ubuntu-restricted-addons avahi-daemon \
 
 fi
 
 # remove pre-installed applications
 sudo apt purge -y chromium-browser rhythmbox transmission-common aisleriot \
 		  gnome-mahjongg gnome-mines gnome-sudoku totem
-
 
 # remove firefox (snap)
 sudo snap remove firefox
