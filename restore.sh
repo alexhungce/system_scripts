@@ -6,7 +6,7 @@ DOT_FILE=dot
 CONFIG_FILE=config
 DEST_DIR=$HOME
 
-BACKUP_DIR_LIST=( atom mozilla thunderbird )
+BACKUP_DIR_LIST=( pulsar mozilla thunderbird )
 BACKUP_FILE_LIST=( gitconfig msmtprc pwclientrc gnupg ssh vim sesame vimrc lnxpromote \
 		   bash_aliases bash_servers bash_acpiops bash_fwtsops bash_kernelops \
 		   bash_misc bash_igtops )
