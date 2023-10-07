@@ -18,9 +18,6 @@ sudo apt install -y acpica-tools vim git git-email gitk openssh-server tree \
 		    shellcheck linux-tools-generic linux-tools-`uname -r` \
 		    gnome-shell-extensions gnome-shell-extension-manager
 
-# install multipass
-sudo snap install multipass
-
 cd $HOME
 [ -e $SOURCE_DIRECTORY ] || mkdir $SOURCE_DIRECTORY
 cd $SOURCE_DIRECTORY
