@@ -16,7 +16,8 @@ sudo apt install -y acpica-tools vim git git-email gitk openssh-server tree \
 		    network-manager-openvpn-gnome thunderbird tilix htop zim \
 		    curl numix-gtk-theme numix-icon-theme-circle openconnect \
 		    shellcheck linux-tools-generic linux-tools-`uname -r` \
-		    gnome-shell-extensions gnome-shell-extension-manager
+		    gnome-shell-extensions gnome-shell-extension-manager \
+		    drm-info
 
 cd $HOME
 [ -e $SOURCE_DIRECTORY ] || mkdir $SOURCE_DIRECTORY
