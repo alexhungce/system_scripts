@@ -76,6 +76,9 @@ sudo apt -y autoremove
 # disable natural scrolling
 gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
 
+# set wheel scroll
+gsettings set org.gnome.desktop.peripherals.trackball scroll-wheel-emulation-button 8
+
 # hide desktop icons
 gsettings set org.gnome.shell.extensions.ding show-home false
 gsettings set org.gnome.shell.extensions.ding show-trash false
