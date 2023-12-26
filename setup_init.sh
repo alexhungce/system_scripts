@@ -83,5 +83,9 @@ gsettings set org.gnome.desktop.peripherals.trackball scroll-wheel-emulation-but
 gsettings set org.gnome.shell.extensions.ding show-home false
 gsettings set org.gnome.shell.extensions.ding show-trash false
 
+# hide dock icons
+gsettings set org.gnome.shell.extensions.dash-to-dock show-trash false
+gsettings set org.gnome.shell.extensions.dash-to-dock show-mounts false
+
 # for faster boot time
 sudo systemctl mask NetworkManager-wait-online.service
