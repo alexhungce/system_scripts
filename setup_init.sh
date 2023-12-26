@@ -17,7 +17,7 @@ sudo apt install -y acpica-tools vim git git-email gitk openssh-server tree \
 		    curl numix-gtk-theme numix-icon-theme-circle openconnect \
 		    shellcheck linux-tools-generic linux-tools-`uname -r` \
 		    gnome-shell-extensions gnome-shell-extension-manager \
-		    drm-info mpv iw
+		    drm-info mpv iw plocate
 
 cd $HOME
 [ -e $SOURCE_DIRECTORY ] || mkdir $SOURCE_DIRECTORY
