@@ -58,11 +58,6 @@ if ! which google-chrome > /dev/null ; then
 	rm google-chrome-stable_current_amd64.deb
 fi
 
-# install atom
-wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
-echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" | sudo tee /etc/apt/sources.list.d/atom.list
-sudo apt update && sudo apt install -y atom
-
 # install applications for Gnome DE
 sudo apt install -y gnome-tweaks chrome-gnome-shell
 
