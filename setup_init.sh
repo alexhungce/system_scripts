@@ -42,9 +42,7 @@ echo "blacklist uvcvideo" | sudo tee -a /etc/modprobe.d/blacklist.conf
 # install different packages if not in VirtualBox
 sudo dmidecode -t system | grep -n VirtualBox
 if [ $? != 0 ] ; then
-	sudo apt install -y nautilus-dropbox vlc acpi deluge \
-			    powertop ubuntu-restricted-addons avahi-daemon \
-
+	sudo apt install -y vlc acpi deluge powertop ubuntu-restricted-addons avahi-daemon
 fi
 
 # remove pre-installed applications
