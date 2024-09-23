@@ -18,7 +18,7 @@ sudo apt install -y acpica-tools vim git git-email gitk openssh-server tree \
 		    shellcheck linux-tools-generic linux-tools-`uname -r` \
 		    gnome-shell-extensions gnome-shell-extension-manager \
 		    drm-info mpv iw plocate gnome-screenshot iperf3 nvme-cli \
-		    lm-sensors btop python3-github python3-virtualenv
+		    lm-sensors btop python3-github python3-virtualenv remmina
 
 cd $HOME
 [ -e $SOURCE_DIRECTORY ] || mkdir $SOURCE_DIRECTORY
