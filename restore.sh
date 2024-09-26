@@ -8,8 +8,7 @@ DEST_DIR=$HOME
 
 BACKUP_DIR_LIST=( pulsar mozilla thunderbird )
 BACKUP_FILE_LIST=( gitconfig msmtprc pwclientrc gnupg ssh vim sesame vimrc lnxpromote \
-		   bash_aliases bash_servers bash_acpiops bash_fwtsops bash_kernelops \
-		   bash_misc bash_igtops )
+		   bash_aliases bash_dev bash_igtops bash_kernelops bash_misc bash_servers )
 BACKUP_CONFIG_LIST=( mpv tilix zim )
 
 cd $HOME/$BACKUP_DIR
