@@ -5,7 +5,8 @@ BACKUP_DIR=backup
 DOT_FILE=dot
 CONFIG_FILE=config
 
-BACKUP_DIR_LIST=( pulsar mozilla thunderbird )
+BACKUP_DIR_LIST=( pulsar mozilla )
+BACKUP_DIR_SNAP_LIST=( thunderbird )
 BACKUP_FILE_LIST=( gitconfig msmtprc pwclientrc gnupg ssh vim sesame vimrc lnxpromote \
 		   bash_aliases bash_dev bash_igtops bash_kernelops bash_misc bash_servers )
 BACKUP_CONFIG_LIST=( Code mpv tilix zim )
@@ -20,6 +21,11 @@ echo "creating archives..."
 for dir in "${BACKUP_DIR_LIST[@]}"
 do
 	tar -zcf $BACKUP_DIR/${dir}.tar.gz .${dir}
+done
+
+for dir in "${BACKUP_DIR_SNAP_LIST[@]}"
+do
+	tar -zcf $BACKUP_DIR/${dir}.tar.gz snap/${dir}
 done
 
 echo ""

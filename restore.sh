@@ -6,7 +6,8 @@ DOT_FILE=dot
 CONFIG_FILE=config
 DEST_DIR=$HOME
 
-BACKUP_DIR_LIST=( pulsar mozilla thunderbird )
+BACKUP_DIR_LIST=( pulsar mozilla )
+BACKUP_DIR_SNAP_LIST=( thunderbird )
 BACKUP_FILE_LIST=( gitconfig msmtprc pwclientrc gnupg ssh vim sesame vimrc lnxpromote \
 		   bash_aliases bash_dev bash_igtops bash_kernelops bash_misc bash_servers )
 BACKUP_CONFIG_LIST=( Code mpv tilix zim )
@@ -19,6 +20,11 @@ echo "extracting archives..."
 for dir in "${BACKUP_DIR_LIST[@]}"
 do
 	[ -e ${dir}.tar.gz ] && tar -xf ${dir}.tar.gz -C $DEST_DIR
+done
+
+for dir in "${BACKUP_DIR_SNAP_LIST[@]}"
+do
+	[ -e ${dir}.tar.gz ] && tar -xf ${dir}.tar.gz -C $DEST_DIR/snap/
 done
 
 echo ""
