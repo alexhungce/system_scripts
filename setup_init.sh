@@ -4,10 +4,9 @@ shopt -s -o nounset
 # assign default directories if there aren't any
 SOURCE_DIRECTORY=${1:-'src'}
 
-sudo sed -i s/ca.archive.ubuntu.com/mirror.it.ubc.ca/g /etc/apt/sources.list
-sudo sed -i s/security.ubuntu.com/mirror.it.ubc.ca/g /etc/apt/sources.list
-
-sudo sed -i '4,20s/# deb-src/deb-src/' /etc/apt/sources.list
+# update source list and source code list
+sudo sed -i s/ca.archive.ubuntu.com/mirror.it.ubc.ca/g /etc/apt/sources.list.d/ubuntu.sources
+sudo sed -i 's/deb/deb deb-src/g' /etc/apt/sources.list.d/ubuntu.sources
 
 sudo apt update && sudo apt -y upgrade
 
