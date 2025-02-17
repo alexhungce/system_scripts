@@ -16,9 +16,9 @@ sudo apt install -y acpica-tools vim git git-email gitk openssh-server tree \
 		    curl numix-gtk-theme numix-icon-theme-circle openconnect \
 		    shellcheck linux-tools-generic linux-tools-`uname -r` \
 		    gnome-shell-extensions gnome-shell-extension-manager \
-		    drm-info mpv iw plocate gnome-screenshot nvme-cli \
+		    drm-info mpv iw plocate gnome-weather crudini nvme-cli \
 		    lm-sensors btop python3-github python3-virtualenv remmina \
-		    gnome-weather python3-gpg libfuse-dev fzf fd-find crudini
+		    python3-gpg libfuse-dev fzf fd-find
 
 cd $HOME
 [ -e $SOURCE_DIRECTORY ] || mkdir $SOURCE_DIRECTORY
@@ -58,7 +58,7 @@ if ! which google-chrome > /dev/null ; then
 fi
 
 # install applications for Gnome DE
-sudo apt install -y gnome-tweaks chrome-gnome-shell
+sudo apt install -y gnome-tweaks
 
 # setup for tilix
 if which tilix > /dev/null ; then
