@@ -18,7 +18,7 @@ sudo apt install -y acpica-tools vim git git-email gitk openssh-server tree \
 		    gnome-shell-extensions gnome-shell-extension-manager \
 		    drm-info mpv iw plocate gnome-weather crudini nvme-cli \
 		    lm-sensors btop python3-github python3-virtualenv remmina \
-		    python3-gpg libfuse-dev fzf fd-find
+		    python3-gpg libfuse-dev fzf fd-find nvtop
 
 cd $HOME
 [ -e $SOURCE_DIRECTORY ] || mkdir $SOURCE_DIRECTORY
