@@ -55,6 +55,22 @@ destkop_install_packages () {
 
 	# install snap packages
 	sudo snap install multipass
+
+	# install Google Chrome
+	if ! which google-chrome > /dev/null ; then
+		wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+		sudo dpkg -i google-chrome-stable_current_amd64.deb
+		sudo apt install -f -y
+		rm google-chrome-stable_current_amd64.deb
+	fi
+}
+
+destkop_install_minimal_packages () {
+	sudo apt install -y drm-info \
+			   linux-tools-generic \
+			   linux-tools-`uname -r` \
+			   meld \
+			   tilix
 }
 
 server_install_packages() {
@@ -71,14 +87,12 @@ install_packages () {
 	generic_install_packages
 
 	if dpkg -l | grep -q ubuntu-desktop ; then
-		destkop_install_packages
-
-		# install Google Chrome
-		if ! which google-chrome > /dev/null ; then
-			wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-			sudo dpkg -i google-chrome-stable_current_amd64.deb
-			sudo apt install -f -y
-			rm google-chrome-stable_current_amd64.deb
+		# Get the system manufacturer
+		MANUFACTURER=$(sudo dmidecode -s system-manufacturer 2>/dev/null)
+		if [[ "$MANUFACTURER" == "AMD" ]]; then
+			destkop_install_minimal_packages
+		else
+			destkop_install_packages
 		fi
 	else
 		server_install_packages
