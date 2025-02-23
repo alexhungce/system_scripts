@@ -78,6 +78,29 @@ server_install_packages() {
 	sudo usermod -aG docker $USER
 }
 
+build_install_packages() {
+	# install packages for linux kernel
+	sudo apt -y install bison \
+			    build-essential \
+			    ccache \
+			    debhelper-compat \
+			    fakeroot \
+			    flex \
+			    libelf-dev \
+			    libncurses5-dev \
+			    libssl-dev
+
+	# install packages for igt-gpu-tools
+	sudo apt -y install libdrm-dev \
+			    libkmod-dev \
+			    libproc2-dev \
+			    libdw-dev \
+			    libpixman-1-dev \
+			    libcairo2-dev \
+			    libudev-dev \
+			    meson
+}
+
 install_packages () {
 	# update source list and source code list
 	sudo sed -i s/ca.archive.ubuntu.com/mirror.it.ubc.ca/g /etc/apt/sources.list.d/ubuntu.sources
@@ -97,6 +120,9 @@ install_packages () {
 	else
 		server_install_packages
 	fi
+
+	# setup build environments
+	build_install_packages
 
 	# remove pre-installed applications
 	sudo apt purge -y chromium-browser rhythmbox transmission-common aisleriot \
