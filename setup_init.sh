@@ -36,22 +36,22 @@ generic_install_packages () {
 
 destkop_install_packages () {
 	sudo apt install -y drm-info \
-			   deluge \
-			   ibus-chewing \
-			   linux-tools-generic \
-			   linux-tools-`uname -r` \
-			   meld \
-			   mpv \
-			   numix-gtk-theme \
-			   numix-icon-theme-circle \
-			   powertop \
-			   preload \
-			   remmina \
-			   thunderbird \
-			   tilix \
-			   ubuntu-restricted-addons \
-			   vlc \
-			   zim
+			    deluge \
+			    ibus-chewing \
+			    linux-tools-generic \
+			    linux-tools-`uname -r` \
+			    meld \
+			    mpv \
+			    numix-gtk-theme \
+			    numix-icon-theme-circle \
+			    powertop \
+			    preload \
+			    remmina \
+			    thunderbird \
+			    tilix \
+			    ubuntu-restricted-addons \
+			    vlc \
+			    zim
 
 	# install snap packages
 	sudo snap install multipass
@@ -67,10 +67,10 @@ destkop_install_packages () {
 
 destkop_install_minimal_packages () {
 	sudo apt install -y drm-info \
-			   linux-tools-generic \
-			   linux-tools-`uname -r` \
-			   meld \
-			   tilix
+			    linux-tools-generic \
+			    linux-tools-`uname -r` \
+			    meld \
+			    tilix
 }
 
 server_install_packages() {
