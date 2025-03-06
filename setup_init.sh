@@ -5,6 +5,7 @@ generic_install_packages () {
 	sudo apt install -y acpi \
 			    acpica-tools \
 			    avahi-daemon \
+			    bat \
 			    btop \
 			    crudini \
 			    curl \
