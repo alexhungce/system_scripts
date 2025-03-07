@@ -87,6 +87,7 @@ build_install_packages() {
 			    debhelper-compat \
 			    fakeroot \
 			    flex \
+			    gawk \
 			    libelf-dev \
 			    libncurses5-dev \
 			    libssl-dev
