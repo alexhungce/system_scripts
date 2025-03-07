@@ -31,6 +31,7 @@ generic_install_packages () {
 			    screen \
 			    shellcheck \
 			    tree \
+			    unifdef \
 			    unp \
 			    vim
 }
