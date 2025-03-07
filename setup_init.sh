@@ -172,9 +172,7 @@ system_config () {
 	[ -e Shared ] || mkdir Shared
 	[ -e tmp ] || mkdir tmp
 
-	if echo $XDG_CURRENT_DESKTOP | grep -qi gnome ; then
-		gnome_config
-	fi
+	gnome_config
 
 	# setup for tilix
 	if which tilix > /dev/null ; then
