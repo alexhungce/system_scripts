@@ -49,6 +49,7 @@ destkop_install_packages () {
 			    powertop \
 			    preload \
 			    remmina \
+			    simple-scan \
 			    thunderbird \
 			    tilix \
 			    ubuntu-restricted-addons \
