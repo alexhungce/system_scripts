@@ -39,6 +39,9 @@ generic_install_packages () {
 destkop_install_packages () {
 	sudo apt install -y drm-info \
 			    deluge \
+			    fcitx5 \
+			    fcitx5-chinese-addons \
+			    fcitx5-chewing \
 			    ibus-chewing \
 			    linux-tools-generic \
 			    linux-tools-`uname -r` \
