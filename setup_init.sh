@@ -108,15 +108,6 @@ build_install_packages() {
 			    meson
 }
 
-replace_snap_firefox_with_deb () {
-	sudo snap remove firefox
-	sudo add-apt-repository ppa:mozillateam/ppa -y
-	# Pin the Firefox package to prefer the PPA version
-	echo 'Package: *\nPin: release o=LP-PPA-mozillateam\nPin-Priority: 1001' | sudo tee /etc/apt/preferences.d/mozilla-firefox
-	sudo apt update
-	sudo apt install -y firefox
-}
-
 install_packages () {
 	# update source list and source code list
 	sudo sed -i s/ca.archive.ubuntu.com/mirror.it.ubc.ca/g /etc/apt/sources.list.d/ubuntu.sources
@@ -139,9 +130,6 @@ install_packages () {
 
 	# setup build environments
 	build_install_packages
-
-	# replace snap firefox with deb
-	replace_snap_firefox_with_deb
 
 	# remove pre-installed applications
 	sudo apt purge -y chromium-browser rhythmbox transmission-common aisleriot \
