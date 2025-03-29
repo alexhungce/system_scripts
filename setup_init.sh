@@ -167,7 +167,7 @@ system_config () {
 	echo "blacklist uvcvideo" | sudo tee -a /etc/modprobe.d/blacklist.conf
 
 	# desktop only below
-	if ! dpkg -l ubuntu-desktop &> /dev/null ; then
+	if ! dpkg -l | grep -q ubuntu-desktop ; then
 		return
 	fi
 
