@@ -57,6 +57,7 @@ destkop_install_packages () {
 			    tilix \
 			    ubuntu-restricted-addons \
 			    vlc \
+			    wl-clipboard \
 			    zim
 
 	# install snap packages
@@ -76,7 +77,8 @@ destkop_install_minimal_packages () {
 			    linux-tools-generic \
 			    linux-tools-`uname -r` \
 			    meld \
-			    tilix
+			    tilix \
+			    wl-clipboard
 }
 
 server_install_packages() {
