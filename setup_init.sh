@@ -30,6 +30,7 @@ generic_install_packages () {
 			    python3-virtualenv \
 			    screen \
 			    shellcheck \
+			    sshfs \
 			    tree \
 			    unifdef \
 			    unp \
