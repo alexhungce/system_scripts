@@ -60,23 +60,4 @@ sudo cp $CONFIG_FILE/50-marblemouse.conf /usr/share/X11/xorg.conf.d/
 dconf load /com/gexperts/Tilix/ < $CONFIG_FILE/tilix.dconf
 wget -qO $HOME"/.config/tilix/schemes/argonaut.json" https://git.io/v7QV5
 
-if [ -e /usr/share/X11/xorg.conf.d/40-libinput.conf ] ; then
-	if ! grep -q "Marble Mouse" /usr/share/X11/xorg.conf.d/40-libinput.conf ; then
-		cp /usr/share/X11/xorg.conf.d/40-libinput.conf .
-		cat <<- EOF >> 40-libinput.conf
-
-		Section "InputClass"
-		        Identifier      "Marble Mouse"
-		        MatchProduct    "Logitech USB Trackball"
-		        Driver          "libinput"
-		        Option          "ScrollMethod" "button"
-		        Option          "ScrollButton" "8"
-		        Option          "MiddleEmulation" "on"
-		EndSection
-		EOF
-		sudo mv 40-libinput.conf /usr/share/X11/xorg.conf.d/40-libinput.conf
-	fi
-fi
-
-
 rm -rf  $CONFIG_FILE
