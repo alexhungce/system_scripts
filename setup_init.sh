@@ -36,6 +36,9 @@ generic_install_packages () {
 			    unifdef \
 			    unp \
 			    vim
+
+	# install python packages
+	pipx install pwclient
 }
 
 destkop_install_packages () {
@@ -81,6 +84,9 @@ destkop_install_minimal_packages () {
 			    meld \
 			    tilix \
 			    wl-clipboard
+
+	# install python packages
+	pipx install pwclient
 }
 
 server_install_packages() {
