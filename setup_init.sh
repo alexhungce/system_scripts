@@ -25,6 +25,7 @@ generic_install_packages () {
 			    p7zip-full \
 			    pastebinit \
 			    plocate \
+			    pipx \
 			    python3-github \
 			    python3-gpg \
 			    python3-virtualenv \
