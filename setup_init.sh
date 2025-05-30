@@ -32,6 +32,7 @@ generic_install_packages () {
 			    screen \
 			    shellcheck \
 			    sshfs \
+			    sshpass \
 			    tree \
 			    unifdef \
 			    unp \
