@@ -52,7 +52,6 @@ echo ""
 # copy config files
 echo "copying config files..."
 [ -e $BACKUP_DIR//$CONFIG_FILE ] || mkdir $BACKUP_DIR//$CONFIG_FILE
-cp -fp /usr/bin/pwclient $BACKUP_DIR/$CONFIG_FILE/
 cp -fp /usr/share/X11/xorg.conf.d/50-marblemouse.conf $BACKUP_DIR/$CONFIG_FILE/
 # backup tilix config
 dconf dump /com/gexperts/Tilix/ > $BACKUP_DIR/$CONFIG_FILE/tilix.dconf

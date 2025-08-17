@@ -51,7 +51,6 @@ echo ""
 # move config files
 echo "copying config files..."
 tar -xf $CONFIG_FILE.tar.gz
-sudo cp $CONFIG_FILE/pwclient /usr/bin/  # patchwork
 
 # Logitech Marble mouse
 sudo cp $CONFIG_FILE/50-marblemouse.conf /usr/share/X11/xorg.conf.d/
