@@ -13,6 +13,7 @@ generic_install_packages () {
 			    fzf \
 			    git \
 			    git-email \
+			    git-lfs \
 			    gitk \
 			    htop \
 			    iw \
