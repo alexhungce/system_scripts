@@ -9,7 +9,7 @@ BACKUP_DIR_LIST=( pulsar mozilla )
 BACKUP_DIR_SNAP_LIST=( thunderbird )
 BACKUP_FILE_LIST=( gitconfig msmtprc pwclientrc gnupg ssh vim sesame vimrc lnxpromote \
 		   bash_aliases bash_dev bash_igtops bash_kernelops bash_misc bash_servers )
-BACKUP_CONFIG_LIST=( Code mpv tilix zim )
+BACKUP_CONFIG_LIST=( Code ghostty mpv tilix zim )
 
 # create a backup directory
 cd $HOME
