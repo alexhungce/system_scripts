@@ -69,6 +69,7 @@ destkop_install_packages () {
 
 	# install snap packages
 	sudo snap install multipass
+	sudo snap install ghostty --classic
 
 	# install Google Chrome
 	if ! which google-chrome > /dev/null ; then
