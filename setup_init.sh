@@ -205,6 +205,7 @@ system_config () {
 
 # assign default directories if there aren't any
 SOURCE_DIRECTORY=${1:-'src'}
+PERSONAL_DIRECTORY='personal'
 
 # install packages based on system configs
 install_packages
@@ -216,6 +217,9 @@ system_config
 cd $HOME
 [ -e $SOURCE_DIRECTORY ] || mkdir $SOURCE_DIRECTORY
 cd $SOURCE_DIRECTORY
+
+[ -e $PERSONAL_DIRECTORY ] || mkdir $PERSONAL_DIRECTORY
+cd $PERSONAL_DIRECTORY
 
 [ -e source_scripts ] || git clone https://github.com/alexhungce/source_scripts.git
 [ -e system_scripts ] || git clone https://github.com/alexhungce/system_scripts.git
