@@ -69,7 +69,11 @@ destkop_install_packages () {
 
 	# install snap packages
 	sudo snap install multipass
-	sudo snap install ghostty --classic
+
+	pushd /tmp
+
+	# install Ghostty from PPA
+	curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh | sudo bash
 
 	# install Google Chrome
 	if ! which google-chrome > /dev/null ; then
@@ -78,6 +82,8 @@ destkop_install_packages () {
 		sudo apt install -f -y
 		rm google-chrome-stable_current_amd64.deb
 	fi
+
+	popd
 }
 
 destkop_install_minimal_packages () {
