@@ -7,7 +7,7 @@ CONFIG_FILE=config
 
 BACKUP_DIR_LIST=( pulsar mozilla )
 BACKUP_DIR_SNAP_LIST=( thunderbird )
-BACKUP_FILE_LIST=( gitconfig msmtprc pwclientrc gnupg ssh vim sesame vimrc lnxpromote \
+BACKUP_FILE_LIST=( msmtprc pwclientrc gnupg ssh vim sesame vimrc lnxpromote \
 		   bash_aliases bash_dev bash_igtops bash_kernelops bash_misc bash_servers )
 BACKUP_CONFIG_LIST=( Code ghostty mpv tilix zim )
 
@@ -46,6 +46,12 @@ for file in "${BACKUP_CONFIG_LIST[@]}"
 do
 	[ -d .config/${file} ] && cp -frp .config/${file} $BACKUP_DIR/$DOT_FILE/.config/
 done
+
+echo "copying .gitconfig in each directories..."
+[ -e $BACKUP_DIR/$DOT_FILE/gitconfig ] || mkdir $BACKUP_DIR/$DOT_FILE/gitconfig
+[ -e .gitconfig ] && cp -fp .gitconfig $BACKUP_DIR/$DOT_FILE/gitconfig/.gitconfig
+[ -e src/amd/.gitconfig ] && cp -fp src/amd/.gitconfig $BACKUP_DIR/$DOT_FILE/gitconfig/.gitconfig_amd
+[ -e src/personal/.gitconfig ] && cp -fp src/personal/.gitconfig $BACKUP_DIR/$DOT_FILE/gitconfig/.gitconfig_personal
 
 echo ""
 
