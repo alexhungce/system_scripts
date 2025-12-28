@@ -28,8 +28,6 @@ do
 	tar -zcf $BACKUP_DIR/${dir}.tar.gz snap/${dir}
 done
 
-echo ""
-
 # copy hidden files
 echo "creating target directories..."
 [ -e $BACKUP_DIR/$DOT_FILE ] || mkdir $BACKUP_DIR/$DOT_FILE
@@ -53,18 +51,13 @@ echo "copying .gitconfig in each directories..."
 [ -e src/amd/.gitconfig ] && cp -fp src/amd/.gitconfig $BACKUP_DIR/$DOT_FILE/gitconfig/.gitconfig_amd
 [ -e src/personal/.gitconfig ] && cp -fp src/personal/.gitconfig $BACKUP_DIR/$DOT_FILE/gitconfig/.gitconfig_personal
 
-echo ""
-
-# copy config files
 echo "copying config files..."
 [ -e $BACKUP_DIR//$CONFIG_FILE ] || mkdir $BACKUP_DIR//$CONFIG_FILE
 cp -fp /usr/share/X11/xorg.conf.d/50-marblemouse.conf $BACKUP_DIR/$CONFIG_FILE/
 # backup tilix config
 dconf dump /com/gexperts/Tilix/ > $BACKUP_DIR/$CONFIG_FILE/tilix.dconf
 
-echo ""
-
-# compress hidden and config directories
+echo "compressing hidden and config directories"
 cd $BACKUP_DIR
 tar -zcf $DOT_FILE.tar.gz $DOT_FILE
 tar -zcf $CONFIG_FILE.tar.gz $CONFIG_FILE
