@@ -6,11 +6,14 @@ DOT_FILE=dot
 CONFIG_FILE=config
 DEST_DIR=$HOME
 
+VSCODE_BACKUP="$BACKUP_DIR/$DOT_FILE/vscode"
+VSCODE_DEST="$HOME/.config/Code/User"
+
 BACKUP_DIR_LIST=( pulsar mozilla )
 BACKUP_DIR_SNAP_LIST=( thunderbird )
 BACKUP_FILE_LIST=( msmtprc pwclientrc gnupg ssh vim sesame vimrc lnxpromote \
 		   bash_aliases bash_dev bash_igtops bash_kernelops bash_misc bash_servers )
-BACKUP_CONFIG_LIST=( Code ghostty mpv tilix zim )
+BACKUP_CONFIG_LIST=( ghostty mpv tilix zim )
 
 cd $HOME/$BACKUP_DIR
 
@@ -59,6 +62,18 @@ fi
 if [ -e "$DOT_FILE/gitconfig/.gitconfig_personal" ]; then
 	cp -fp "$DOT_FILE/gitconfig/.gitconfig_personal" "$HOME/src/personal/.gitconfig"
 	echo " Restored src/personal/.gitconfig"
+fi
+
+echo "restoring VSCode config files..."
+if [ -d "$VSCODE_BACKUP" ]; then
+	mkdir -p "$VSCODE_DEST/snippets"
+
+	[ -f "$VSCODE_BACKUP/settings.json" ] && cp -fp "$VSCODE_BACKUP/settings.json" "$VSCODE_DEST/"
+	[ -f "$VSCODE_BACKUP/keybindings.json" ] && cp -fp "$VSCODE_BACKUP/keybindings.json" "$VSCODE_DEST/"
+
+	if [ -d "$VSCODE_BACKUP/snippets" ]; then
+		cp -rfp "$VSCODE_BACKUP/snippets/"* "$VSCODE_DEST/snippets/"
+	fi
 fi
 
 rm -rf $DOT_FILE

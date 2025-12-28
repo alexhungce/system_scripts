@@ -5,11 +5,14 @@ BACKUP_DIR=backup
 DOT_FILE=dot
 CONFIG_FILE=config
 
+VSCODE_BACKUP="$BACKUP_DIR/$DOT_FILE/vscode"
+VSCODE_CONFIG="$HOME/.config/Code/User"
+
 BACKUP_DIR_LIST=( pulsar mozilla )
 BACKUP_DIR_SNAP_LIST=( thunderbird )
 BACKUP_FILE_LIST=( msmtprc pwclientrc gnupg ssh vim sesame vimrc lnxpromote \
 		   bash_aliases bash_dev bash_igtops bash_kernelops bash_misc bash_servers )
-BACKUP_CONFIG_LIST=( Code ghostty mpv tilix zim )
+BACKUP_CONFIG_LIST=( ghostty mpv tilix zim )
 
 # create a backup directory
 cd $HOME
@@ -50,6 +53,11 @@ echo "copying .gitconfig in each directories..."
 [ -e .gitconfig ] && cp -fp .gitconfig $BACKUP_DIR/$DOT_FILE/gitconfig/.gitconfig
 [ -e src/amd/.gitconfig ] && cp -fp src/amd/.gitconfig $BACKUP_DIR/$DOT_FILE/gitconfig/.gitconfig_amd
 [ -e src/personal/.gitconfig ] && cp -fp src/personal/.gitconfig $BACKUP_DIR/$DOT_FILE/gitconfig/.gitconfig_personal
+
+echo "copying VSCode config..."
+[ -e "$BACKUP_DIR/$DOT_FILE/vscode" ] || mkdir "$BACKUP_DIR/$DOT_FILE/vscode"
+[ -d "$VSCODE_CONFIG" ] && cp -fp "$VSCODE_CONFIG/"*.json "$VSCODE_BACKUP/"
+[ -d "$VSCODE_CONFIG/snippets" ] && cp -r "$VSCODE_CONFIG/snippets" "$VSCODE_BACKUP/"
 
 echo "copying config files..."
 [ -e $BACKUP_DIR//$CONFIG_FILE ] || mkdir $BACKUP_DIR//$CONFIG_FILE
