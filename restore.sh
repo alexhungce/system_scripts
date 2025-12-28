@@ -8,7 +8,7 @@ DEST_DIR=$HOME
 
 BACKUP_DIR_LIST=( pulsar mozilla )
 BACKUP_DIR_SNAP_LIST=( thunderbird )
-BACKUP_FILE_LIST=( gitconfig msmtprc pwclientrc gnupg ssh vim sesame vimrc lnxpromote \
+BACKUP_FILE_LIST=( msmtprc pwclientrc gnupg ssh vim sesame vimrc lnxpromote \
 		   bash_aliases bash_dev bash_igtops bash_kernelops bash_misc bash_servers )
 BACKUP_CONFIG_LIST=( Code ghostty mpv tilix zim )
 
@@ -43,6 +43,23 @@ for file in "${BACKUP_CONFIG_LIST[@]}"
 do
         [ -d $DOT_FILE/.config/${file} ] && cp -f -r $DOT_FILE/.config/${file} $DEST_DIR/.config
 done
+
+echo "restoring .gitconfig files to respective directories..."
+mkdir -p "$HOME/src/amd" "$HOME/src/personal"
+if [ -e "$DOT_FILE/gitconfig/.gitconfig" ]; then
+	cp -fp "$DOT_FILE/gitconfig/.gitconfig" "$HOME/"
+	echo " Restored ~/.gitconfig"
+fi
+
+if [ -e "$DOT_FILE/gitconfig/.gitconfig_amd" ]; then
+	cp -fp "$DOT_FILE/gitconfig/.gitconfig_amd" "$HOME/src/amd/.gitconfig"
+	echo " Restored src/amd/.gitconfig"
+fi
+
+if [ -e "$DOT_FILE/gitconfig/.gitconfig_personal" ]; then
+	cp -fp "$DOT_FILE/gitconfig/.gitconfig_personal" "$HOME/src/personal/.gitconfig"
+	echo " Restored src/personal/.gitconfig"
+fi
 
 rm -rf $DOT_FILE
 
