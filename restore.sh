@@ -84,10 +84,7 @@ echo ""
 echo "copying config files..."
 tar -xf $CONFIG_FILE.tar.gz
 
-# Logitech Marble mouse
-sudo cp $CONFIG_FILE/50-marblemouse.conf /usr/share/X11/xorg.conf.d/
-
-# backup tilix config
+# restore tilix config
 dconf load /com/gexperts/Tilix/ < $CONFIG_FILE/tilix.dconf
 wget -qO $HOME"/.config/tilix/schemes/argonaut.json" https://git.io/v7QV5
 
