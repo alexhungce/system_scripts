@@ -43,7 +43,7 @@ generic_install_packages () {
 	pipx install pwclient
 }
 
-destkop_install_packages () {
+desktop_install_packages () {
 	sudo apt install -y drm-info \
 			    deluge \
 			    fcitx5 \
@@ -86,7 +86,7 @@ destkop_install_packages () {
 	popd
 }
 
-destkop_install_minimal_packages () {
+desktop_install_minimal_packages () {
 	sudo apt install -y drm-info \
 			    linux-tools-generic \
 			    linux-tools-`uname -r` \
@@ -139,9 +139,9 @@ install_packages () {
 		# Get the system manufacturer
 		MANUFACTURER=$(sudo dmidecode -s system-manufacturer 2>/dev/null)
 		if [[ "$MANUFACTURER" == "AMD" ]]; then
-			destkop_install_minimal_packages
+			desktop_install_minimal_packages
 		else
-			destkop_install_packages
+			desktop_install_packages
 		fi
 	else
 		server_install_packages
