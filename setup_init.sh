@@ -55,6 +55,18 @@ install_chrome() {
 install_ghostty() {
 	log "Installing Ghostty Terminal..."
 	curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh | sudo bash
+
+	local source_file="com.mitchellh.ghostty.desktop"
+	if [ -f "/usr/share/applications/$source_file" ]; then
+		mkdir -p ~/.local/share/applications/
+		cp "/usr/share/applications/$source_file" ~/.local/share/applications/
+		sed -i 's/Icon=com.mitchellh.ghostty/Icon=utilities-terminal/' ~/.local/share/applications/"$source_file"
+
+		# Refresh the desktop database so GNOME sees the change immediately
+		update-desktop-database ~/.local/share/applications/
+	else
+		warn "Ghostty desktop file not found. Skipping icon customization."
+	fi
 }
 
 install_generic_packages () {
