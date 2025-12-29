@@ -14,6 +14,24 @@ is_desktop() {
 	dpkg -l | grep -q ubuntu-desktop
 }
 
+# Installation Functions
+install_chrome() {
+	if ! command -v google-chrome > /dev/null; then
+		log "Installing Google Chrome..."
+		local deb_file="/tmp/google-chrome-stable_current_amd64.deb"
+		wget -O "$deb_file" https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+		sudo apt install -y "$deb_file"
+		rm "$deb_file"
+	else
+		log "Google Chrome is already installed."
+	fi
+}
+
+install_ghostty() {
+	log "Installing Ghostty Terminal..."
+	curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh | sudo bash
+}
+
 generic_install_packages () {
 	sudo apt install -y acpi \
 			    acpica-tools \
@@ -83,19 +101,10 @@ desktop_install_packages () {
 	# install snap packages
 	sudo snap install multipass
 
+	# cd to /tmp for downloads and installations
 	pushd /tmp
-
-	# install Ghostty from PPA
-	curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh | sudo bash
-
-	# install Google Chrome
-	if ! which google-chrome > /dev/null ; then
-		wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-		sudo dpkg -i google-chrome-stable_current_amd64.deb
-		sudo apt install -f -y
-		rm google-chrome-stable_current_amd64.deb
-	fi
-
+	install_ghostty
+	install_chrome
 	popd
 }
 
