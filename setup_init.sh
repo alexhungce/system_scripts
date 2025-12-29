@@ -31,6 +31,14 @@ update_sources() {
 	sudo apt update && sudo apt -y upgrade
 }
 
+cleanup_system() {
+	log "Removing unused packages..."
+
+	sudo apt purge -y chromium-browser rhythmbox transmission-common aisleriot \
+			gnome-mahjongg gnome-mines gnome-sudoku totem
+	sudo apt -y autoremove
+}
+
 # Installation Functions
 install_chrome() {
 	if ! command -v google-chrome > /dev/null; then
@@ -192,12 +200,6 @@ install_packages () {
 
 	# setup build environments
 	install_build_packages
-
-	# remove pre-installed applications
-	sudo apt purge -y chromium-browser rhythmbox transmission-common aisleriot \
-			gnome-mahjongg gnome-mines gnome-sudoku totem
-
-	sudo apt -y autoremove
 }
 
 configure_gnome () {
@@ -284,6 +286,9 @@ update_sources
 
 # install packages based on system configs
 install_packages
+
+# remove pre-installed applications
+cleanup_system
 
 # configuration based on desktop
 configure_system
