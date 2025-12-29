@@ -138,9 +138,6 @@ install_desktop_minimal_packages () {
 			    meld \
 			    tilix \
 			    wl-clipboard
-
-	# install python packages
-	pipx install pwclient
 }
 
 install_docker() {
