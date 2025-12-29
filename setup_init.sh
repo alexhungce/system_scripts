@@ -32,7 +32,7 @@ install_ghostty() {
 	curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh | sudo bash
 }
 
-generic_install_packages () {
+install_generic_packages () {
 	sudo apt install -y acpi \
 			    acpica-tools \
 			    avahi-daemon \
@@ -74,7 +74,7 @@ generic_install_packages () {
 	pipx install pwclient
 }
 
-desktop_install_packages () {
+install_desktop_packages () {
 	sudo apt install -y drm-info \
 			    deluge \
 			    fcitx5 \
@@ -108,7 +108,7 @@ desktop_install_packages () {
 	popd
 }
 
-desktop_install_minimal_packages () {
+install_desktop_minimal_packages () {
 	sudo apt install -y drm-info \
 			    linux-tools-generic \
 			    linux-tools-`uname -r` \
@@ -120,7 +120,7 @@ desktop_install_minimal_packages () {
 	pipx install pwclient
 }
 
-server_install_packages() {
+install_docker() {
 	sudo apt install -y docker.io
 	sudo usermod -aG docker $USER
 }
@@ -155,18 +155,18 @@ install_packages () {
 	sudo sed -i 's/deb/deb deb-src/g' /etc/apt/sources.list.d/ubuntu.sources
 	sudo apt update && sudo apt -y upgrade
 
-	generic_install_packages
+	install_generic_packages
 
-	if dpkg -l | grep -q ubuntu-desktop ; then
+	if is_desktop ; then
 		# Get the system manufacturer
 		MANUFACTURER=$(sudo dmidecode -s system-manufacturer 2>/dev/null)
 		if [[ "$MANUFACTURER" == "AMD" ]]; then
-			desktop_install_minimal_packages
+			install_desktop_minimal_packages
 		else
-			desktop_install_packages
+			install_desktop_packages
 		fi
 	else
-		server_install_packages
+		install_docker
 	fi
 
 	# setup build environments
@@ -179,7 +179,7 @@ install_packages () {
 	sudo apt -y autoremove
 }
 
-gnome_config () {
+configure_gnome () {
 	# install applications for Gnome DE
 	sudo apt install -y network-manager-openvpn-gnome gnome-shell-extensions \
 			    gnome-shell-extension-manager gnome-tweaks gnome-weather
@@ -199,7 +199,7 @@ gnome_config () {
 	gsettings set org.gnome.shell.extensions.dash-to-dock show-mounts false
 }
 
-system_config () {
+configure_system () {
 	# disable crash report / apport
 	sudo rm /var/crash/*
 	sudo sed -i -e s/^enabled\=1$/enabled\=0/ /etc/default/apport
@@ -217,7 +217,7 @@ system_config () {
 	[ -e Shared ] || mkdir Shared
 	[ -e tmp ] || mkdir tmp
 
-	gnome_config
+	configure_gnome
 
 	# setup for tilix
 	if which tilix > /dev/null ; then
@@ -233,7 +233,7 @@ PERSONAL_DIRECTORY='personal'
 install_packages
 
 # configuration based on desktop
-system_config
+configure_system
 
 # download source code
 cd $HOME
