@@ -33,6 +33,8 @@ install_ghostty() {
 }
 
 install_generic_packages () {
+	log "Installing generic packages..."
+
 	sudo apt install -y acpi \
 			    acpica-tools \
 			    avahi-daemon \
@@ -75,6 +77,8 @@ install_generic_packages () {
 }
 
 install_desktop_packages () {
+	log "Installing desktop packages..."
+
 	sudo apt install -y drm-info \
 			    deluge \
 			    fcitx5 \
@@ -109,6 +113,8 @@ install_desktop_packages () {
 }
 
 install_desktop_minimal_packages () {
+	log "Installing minimal desktop packages..."
+
 	sudo apt install -y drm-info \
 			    linux-tools-generic \
 			    linux-tools-`uname -r` \
@@ -121,11 +127,15 @@ install_desktop_minimal_packages () {
 }
 
 install_docker() {
+	log "Installing Docker..."
+
 	sudo apt install -y docker.io
 	sudo usermod -aG docker $USER
 }
 
-build_install_packages() {
+install_build_packages() {
+	log "Installing build packages..."
+
 	# install packages for linux kernel
 	sudo apt -y install bison \
 			    build-essential \
@@ -170,7 +180,7 @@ install_packages () {
 	fi
 
 	# setup build environments
-	build_install_packages
+	install_build_packages
 
 	# remove pre-installed applications
 	sudo apt purge -y chromium-browser rhythmbox transmission-common aisleriot \
@@ -266,3 +276,5 @@ configure_system
 
 # download source code
 setup_git_repos
+
+log "Setup Complete!"
