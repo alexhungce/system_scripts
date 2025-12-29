@@ -180,6 +180,8 @@ install_packages () {
 }
 
 configure_gnome () {
+	log "Configuring GNOME..."
+
 	# install applications for Gnome DE
 	sudo apt install -y network-manager-openvpn-gnome gnome-shell-extensions \
 			    gnome-shell-extension-manager gnome-tweaks gnome-weather
@@ -191,12 +193,16 @@ configure_gnome () {
 	gsettings set org.gnome.desktop.peripherals.trackball scroll-wheel-emulation-button 8
 
 	# hide desktop icons
-	gsettings set org.gnome.shell.extensions.ding show-home false
-	gsettings set org.gnome.shell.extensions.ding show-trash false
+	if gsettings list-schemas | grep -q "org.gnome.shell.extensions.ding"; then
+		gsettings set org.gnome.shell.extensions.ding show-home false
+		gsettings set org.gnome.shell.extensions.ding show-trash false
+	fi
 
 	# hide dock icons
-	gsettings set org.gnome.shell.extensions.dash-to-dock show-trash false
-	gsettings set org.gnome.shell.extensions.dash-to-dock show-mounts false
+	if gsettings list-schemas | grep -q "org.gnome.shell.extensions.dash-to-dock"; then
+		gsettings set org.gnome.shell.extensions.dash-to-dock show-trash false
+		gsettings set org.gnome.shell.extensions.dash-to-dock show-mounts false
+	fi
 }
 
 configure_system () {
