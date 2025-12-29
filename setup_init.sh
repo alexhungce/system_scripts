@@ -14,6 +14,23 @@ is_desktop() {
 	dpkg -l | grep -q ubuntu-desktop
 }
 
+update_sources() {
+	log "Updating APT sources..."
+
+	local source_file="/etc/apt/sources.list.d/ubuntu.sources"
+	if [ -f "$source_file" ]; then
+		sudo sed -i 's/ca.archive.ubuntu.com/mirror.it.ubc.ca/g' "$source_file"
+
+		if ! grep -q "deb-src" "$source_file"; then
+			sudo sed -i 's/deb/deb deb-src/g' "$source_file"
+		fi
+	else
+		warn "$source_file not found. Skipping source modification."
+	fi
+
+	sudo apt update && sudo apt -y upgrade
+}
+
 # Installation Functions
 install_chrome() {
 	if ! command -v google-chrome > /dev/null; then
@@ -162,11 +179,6 @@ install_build_packages() {
 }
 
 install_packages () {
-	# update source list and source code list
-	sudo sed -i s/ca.archive.ubuntu.com/mirror.it.ubc.ca/g /etc/apt/sources.list.d/ubuntu.sources
-	sudo sed -i 's/deb/deb deb-src/g' /etc/apt/sources.list.d/ubuntu.sources
-	sudo apt update && sudo apt -y upgrade
-
 	install_generic_packages
 
 	if is_desktop ; then
@@ -269,6 +281,9 @@ setup_git_repos() {
 # assign default directories if there aren't any
 SOURCE_DIRECTORY=${1:-'src'}
 PERSONAL_DIRECTORY='personal'
+
+# update source list and source code list
+update_sources
 
 # install packages based on system configs
 install_packages
