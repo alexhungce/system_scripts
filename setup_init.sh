@@ -225,6 +225,25 @@ configure_system () {
 	fi
 }
 
+setup_git_repos() {
+	log "Setting up Git Repositories..."
+
+	mkdir -p "$HOME/$SOURCE_DIRECTORY/$PERSONAL_DIRECTORY"
+	cd "$HOME/$SOURCE_DIRECTORY/$PERSONAL_DIRECTORY" || exit 1
+
+	if [ ! -d "source_scripts" ]; then
+		git clone https://github.com/alexhungce/source_scripts.git
+	else
+		log "source_scripts already exists."
+	fi
+
+	if [ ! -d "system_scripts" ]; then
+		git clone https://github.com/alexhungce/system_scripts.git
+	else
+		log "system_scripts already exists."
+	fi
+}
+
 # assign default directories if there aren't any
 SOURCE_DIRECTORY=${1:-'src'}
 PERSONAL_DIRECTORY='personal'
@@ -236,12 +255,4 @@ install_packages
 configure_system
 
 # download source code
-cd $HOME
-[ -e $SOURCE_DIRECTORY ] || mkdir $SOURCE_DIRECTORY
-cd $SOURCE_DIRECTORY
-
-[ -e $PERSONAL_DIRECTORY ] || mkdir $PERSONAL_DIRECTORY
-cd $PERSONAL_DIRECTORY
-
-[ -e source_scripts ] || git clone https://github.com/alexhungce/source_scripts.git
-[ -e system_scripts ] || git clone https://github.com/alexhungce/system_scripts.git
+setup_git_repos
