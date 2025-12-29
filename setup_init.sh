@@ -200,12 +200,16 @@ configure_gnome () {
 }
 
 configure_system () {
+	log "Applying system configs..."
+
 	# disable crash report / apport
 	sudo rm /var/crash/*
 	sudo sed -i -e s/^enabled\=1$/enabled\=0/ /etc/default/apport
 
 	# blacklist webcam for security
-	echo "blacklist uvcvideo" | sudo tee -a /etc/modprobe.d/blacklist.conf
+	if ! grep -q "blacklist uvcvideo" /etc/modprobe.d/blacklist.conf; then
+		echo "blacklist uvcvideo" | sudo tee -a /etc/modprobe.d/blacklist.conf
+	fi
 
 	# desktop only below
 	if ! dpkg -l | grep -q ubuntu-desktop ; then
@@ -213,15 +217,15 @@ configure_system () {
 	fi
 
 	# create "Shared" and "tmp" directories
-	cd $HOME
-	[ -e Shared ] || mkdir Shared
-	[ -e tmp ] || mkdir tmp
+	mkdir -p "$HOME/Shared" "$HOME/tmp"
 
 	configure_gnome
 
 	# setup for tilix
-	if which tilix > /dev/null ; then
-		sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
+	if command -v tilix > /dev/null; then
+		if [ ! -f /etc/profile.d/vte.sh ]; then
+			sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
+		fi
 	fi
 }
 
