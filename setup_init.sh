@@ -1,6 +1,19 @@
 #!/bin/bash
 shopt -s -o nounset
 
+# Helper Functions
+log() {
+	echo -e "\033[1;32m[SETUP] $1\033[0m"
+}
+
+warn() {
+	echo -e "\033[1;33m[WARNING] $1\033[0m"
+}
+
+is_desktop() {
+	dpkg -l | grep -q ubuntu-desktop
+}
+
 generic_install_packages () {
 	sudo apt install -y acpi \
 			    acpica-tools \
