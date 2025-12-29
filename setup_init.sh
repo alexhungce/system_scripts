@@ -130,7 +130,9 @@ install_docker() {
 	log "Installing Docker..."
 
 	sudo apt install -y docker.io
-	sudo usermod -aG docker $USER
+	if ! groups "$USER" | grep -q docker; then
+		sudo usermod -aG docker "$USER"
+	fi
 }
 
 install_build_packages() {
