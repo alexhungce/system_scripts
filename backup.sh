@@ -24,50 +24,50 @@ warn() {
 }
 
 log "initializing backup directories..."
-cd $HOME
+cd "$HOME"
 mkdir -p "$BACKUP_DIR/$DOT_FILE"/{.config,gitconfig,vscode} "$BACKUP_DIR/$CONFIG_FILE"
 
 # compress .atom, .mozilla and .thunderbird
 log "creating application archives..."
 for dir in "${BACKUP_DIR_LIST[@]}"
 do
-	tar -zcf $BACKUP_DIR/${dir}.tar.gz .${dir}
+	tar -zcf "$BACKUP_DIR/${dir}.tar.gz" ".${dir}"
 done
 
 for dir in "${BACKUP_DIR_SNAP_LIST[@]}"
 do
-	tar -zcf $BACKUP_DIR/${dir}.tar.gz snap/${dir}
+	tar -zcf "$BACKUP_DIR/${dir}.tar.gz" "snap/${dir}"
 done
 
 log "copying dot files and directories..."
 for file in "${BACKUP_FILE_LIST[@]}"
 do
-	[ -f .${file} ] && cp -fp .${file} $BACKUP_DIR/$DOT_FILE
-	[ -d .${file} ] && cp -frp .${file} $BACKUP_DIR/$DOT_FILE
+	[ -f ".${file}" ] && cp -fp ".${file}" "$BACKUP_DIR/$DOT_FILE"
+	[ -d ".${file}" ] && cp -frp ".${file}" "$BACKUP_DIR/$DOT_FILE"
 done
 
 for file in "${BACKUP_CONFIG_LIST[@]}"
 do
-	[ -d .config/${file} ] && cp -frp .config/${file} $BACKUP_DIR/$DOT_FILE/.config/
+	[ -d ".config/${file}" ] && cp -frp ".config/${file}" "$BACKUP_DIR/$DOT_FILE/.config/"
 done
 
 log "copying .gitconfig in all directories..."
-[ -e .gitconfig ] && cp -fp .gitconfig $BACKUP_DIR/$DOT_FILE/gitconfig/.gitconfig
-[ -e src/amd/.gitconfig ] && cp -fp src/amd/.gitconfig $BACKUP_DIR/$DOT_FILE/gitconfig/.gitconfig_amd
-[ -e src/personal/.gitconfig ] && cp -fp src/personal/.gitconfig $BACKUP_DIR/$DOT_FILE/gitconfig/.gitconfig_personal
+[ -e ".gitconfig" ] && cp -fp ".gitconfig" "$BACKUP_DIR/$DOT_FILE/gitconfig/.gitconfig"
+[ -e "src/amd/.gitconfig" ] && cp -fp "src/amd/.gitconfig" "$BACKUP_DIR/$DOT_FILE/gitconfig/.gitconfig_amd"
+[ -e "src/personal/.gitconfig" ] && cp -fp "src/personal/.gitconfig" "$BACKUP_DIR/$DOT_FILE/gitconfig/.gitconfig_personal"
 
 log "copying VSCode config..."
 [ -d "$VSCODE_CONFIG" ] && cp -fp "$VSCODE_CONFIG/"*.json "$VSCODE_BACKUP/"
 [ -d "$VSCODE_CONFIG/snippets" ] && cp -r "$VSCODE_CONFIG/snippets" "$VSCODE_BACKUP/"
 
 log "copying application config files..."
-dconf dump /com/gexperts/Tilix/ > $BACKUP_DIR/$CONFIG_FILE/tilix.dconf
+dconf dump /com/gexperts/Tilix/ > "$BACKUP_DIR/$CONFIG_FILE/tilix.dconf"
 
 log "finalizing backup archives..."
-cd $BACKUP_DIR
-tar -zcf $DOT_FILE.tar.gz $DOT_FILE
-tar -zcf $CONFIG_FILE.tar.gz $CONFIG_FILE
-rm -rf $DOT_FILE
-rm -rf $CONFIG_FILE
+cd "$BACKUP_DIR"
+tar -zcf "$DOT_FILE.tar.gz" "$DOT_FILE"
+tar -zcf "$CONFIG_FILE.tar.gz" "$CONFIG_FILE"
+rm -rf "$DOT_FILE"
+rm -rf "$CONFIG_FILE"
 
 log "Backup completed successfully at $BACKUP_DIR"

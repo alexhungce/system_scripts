@@ -24,31 +24,31 @@ warn() {
     echo -e "\033[1;33m[WARNING] $1\033[0m"
 }
 
-cd $HOME/$BACKUP_DIR
+cd "$HOME/$BACKUP_DIR"
 
 log "extracting archives..."
 for dir in "${BACKUP_DIR_LIST[@]}"
 do
-	[ -e ${dir}.tar.gz ] && tar -xf ${dir}.tar.gz -C $DEST_DIR
+	[ -e "${dir}.tar.gz" ] && tar -xf "${dir}.tar.gz" -C "$DEST_DIR"
 done
 
 for dir in "${BACKUP_DIR_SNAP_LIST[@]}"
 do
-	[ -e ${dir}.tar.gz ] && tar -xf ${dir}.tar.gz -C $DEST_DIR/snap/
+	[ -e "${dir}.tar.gz" ] && tar -xf "${dir}.tar.gz" -C "$DEST_DIR/snap/"
 done
 
 log "copying dot files..."
-tar -xf $DOT_FILE.tar.gz
+tar -xf "$DOT_FILE.tar.gz"
 
 for file in "${BACKUP_FILE_LIST[@]}"
 do
-	[ -f $DOT_FILE/.${file} ] && cp -f $DOT_FILE/.${file} $DEST_DIR
-	[ -d $DOT_FILE/.${file} ] && cp -r $DOT_FILE/.${file} $DEST_DIR
+	[ -f "$DOT_FILE/.${file}" ] && cp -f "$DOT_FILE/.${file}" "$DEST_DIR"
+	[ -d "$DOT_FILE/.${file}" ] && cp -r "$DOT_FILE/.${file}" "$DEST_DIR"
 done
 
 for file in "${BACKUP_CONFIG_LIST[@]}"
 do
-        [ -d $DOT_FILE/.config/${file} ] && cp -f -r $DOT_FILE/.config/${file} $DEST_DIR/.config
+        [ -d "$DOT_FILE/.config/${file}" ] && cp -f -r "$DOT_FILE/.config/${file}" "$DEST_DIR/.config"
 done
 
 log "restoring .gitconfig to respective directories..."
@@ -80,15 +80,15 @@ if [ -d "$VSCODE_BACKUP" ]; then
 	fi
 fi
 
-rm -rf $DOT_FILE
+rm -rf "$DOT_FILE"
 
 log "copying config files..."
-tar -xf $CONFIG_FILE.tar.gz
+tar -xf "$CONFIG_FILE.tar.gz"
 
 log "restoring tilix config..."
-dconf load /com/gexperts/Tilix/ < $CONFIG_FILE/tilix.dconf
+dconf load /com/gexperts/Tilix/ < "$CONFIG_FILE/tilix.dconf"
 wget -qO $HOME"/.config/tilix/schemes/argonaut.json" https://git.io/v7QV5
 
-rm -rf  $CONFIG_FILE
+rm -rf "$CONFIG_FILE"
 
 log "Restore completed successfully"
