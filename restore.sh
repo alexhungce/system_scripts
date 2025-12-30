@@ -15,11 +15,18 @@ BACKUP_FILE_LIST=( msmtprc pwclientrc gnupg ssh vim sesame vimrc lnxpromote \
 		   bash_aliases bash_dev bash_igtops bash_kernelops bash_misc bash_servers )
 BACKUP_CONFIG_LIST=( ghostty mpv tilix zim )
 
+# Helper functions
+log() {
+    echo -e "\033[1;32m[RESTORE] $1\033[0m"
+}
+
+warn() {
+    echo -e "\033[1;33m[WARNING] $1\033[0m"
+}
+
 cd $HOME/$BACKUP_DIR
 
-# copy .atom, .mozilla and .thunderbird
-echo "extracting archives..."
-
+log "extracting archives..."
 for dir in "${BACKUP_DIR_LIST[@]}"
 do
 	[ -e ${dir}.tar.gz ] && tar -xf ${dir}.tar.gz -C $DEST_DIR
@@ -30,10 +37,7 @@ do
 	[ -e ${dir}.tar.gz ] && tar -xf ${dir}.tar.gz -C $DEST_DIR/snap/
 done
 
-echo ""
-
-# move dot files to home directory
-echo "copying dot files..."
+log "copying dot files..."
 tar -xf $DOT_FILE.tar.gz
 
 for file in "${BACKUP_FILE_LIST[@]}"
@@ -47,24 +51,24 @@ do
         [ -d $DOT_FILE/.config/${file} ] && cp -f -r $DOT_FILE/.config/${file} $DEST_DIR/.config
 done
 
-echo "restoring .gitconfig files to respective directories..."
+log "restoring .gitconfig to respective directories..."
 mkdir -p "$HOME/src/amd" "$HOME/src/personal"
 if [ -e "$DOT_FILE/gitconfig/.gitconfig" ]; then
 	cp -fp "$DOT_FILE/gitconfig/.gitconfig" "$HOME/"
-	echo " Restored ~/.gitconfig"
+	log " Restored ~/.gitconfig"
 fi
 
 if [ -e "$DOT_FILE/gitconfig/.gitconfig_amd" ]; then
 	cp -fp "$DOT_FILE/gitconfig/.gitconfig_amd" "$HOME/src/amd/.gitconfig"
-	echo " Restored src/amd/.gitconfig"
+	log " Restored src/amd/.gitconfig"
 fi
 
 if [ -e "$DOT_FILE/gitconfig/.gitconfig_personal" ]; then
 	cp -fp "$DOT_FILE/gitconfig/.gitconfig_personal" "$HOME/src/personal/.gitconfig"
-	echo " Restored src/personal/.gitconfig"
+	log " Restored src/personal/.gitconfig"
 fi
 
-echo "restoring VSCode config files..."
+log "restoring VSCode config files..."
 if [ -d "$VSCODE_BACKUP" ]; then
 	mkdir -p "$VSCODE_DEST/snippets"
 
@@ -78,14 +82,13 @@ fi
 
 rm -rf $DOT_FILE
 
-echo ""
-
-# move config files
-echo "copying config files..."
+log "copying config files..."
 tar -xf $CONFIG_FILE.tar.gz
 
-# restore tilix config
+log "restoring tilix config..."
 dconf load /com/gexperts/Tilix/ < $CONFIG_FILE/tilix.dconf
 wget -qO $HOME"/.config/tilix/schemes/argonaut.json" https://git.io/v7QV5
 
 rm -rf  $CONFIG_FILE
+
+log "Restore completed successfully"
