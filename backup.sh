@@ -14,9 +14,9 @@ BACKUP_FILE_LIST=( msmtprc pwclientrc gnupg ssh vim sesame vimrc lnxpromote \
 		   bash_aliases bash_dev bash_igtops bash_kernelops bash_misc bash_servers )
 BACKUP_CONFIG_LIST=( ghostty mpv tilix zim )
 
-# create a backup directory
+echo "creating a backup directory and subdirectories..."
 cd $HOME
-[ -e $BACKUP_DIR ] || mkdir $BACKUP_DIR
+mkdir -p "$BACKUP_DIR/$DOT_FILE"/{.config,gitconfig,vscode} "$BACKUP_DIR/$CONFIG_FILE"
 
 # compress .atom, .mozilla and .thunderbird
 echo "creating archives..."
@@ -32,10 +32,6 @@ do
 done
 
 # copy hidden files
-echo "creating target directories..."
-[ -e $BACKUP_DIR/$DOT_FILE ] || mkdir $BACKUP_DIR/$DOT_FILE
-[ -e $BACKUP_DIR/$DOT_FILE/.config ] || mkdir $BACKUP_DIR/$DOT_FILE/.config
-
 echo "copying dot files and directories..."
 for file in "${BACKUP_FILE_LIST[@]}"
 do
@@ -49,19 +45,15 @@ do
 done
 
 echo "copying .gitconfig in each directories..."
-[ -e $BACKUP_DIR/$DOT_FILE/gitconfig ] || mkdir $BACKUP_DIR/$DOT_FILE/gitconfig
 [ -e .gitconfig ] && cp -fp .gitconfig $BACKUP_DIR/$DOT_FILE/gitconfig/.gitconfig
 [ -e src/amd/.gitconfig ] && cp -fp src/amd/.gitconfig $BACKUP_DIR/$DOT_FILE/gitconfig/.gitconfig_amd
 [ -e src/personal/.gitconfig ] && cp -fp src/personal/.gitconfig $BACKUP_DIR/$DOT_FILE/gitconfig/.gitconfig_personal
 
 echo "copying VSCode config..."
-[ -e "$BACKUP_DIR/$DOT_FILE/vscode" ] || mkdir "$BACKUP_DIR/$DOT_FILE/vscode"
 [ -d "$VSCODE_CONFIG" ] && cp -fp "$VSCODE_CONFIG/"*.json "$VSCODE_BACKUP/"
 [ -d "$VSCODE_CONFIG/snippets" ] && cp -r "$VSCODE_CONFIG/snippets" "$VSCODE_BACKUP/"
 
 echo "copying config files..."
-[ -e $BACKUP_DIR//$CONFIG_FILE ] || mkdir $BACKUP_DIR//$CONFIG_FILE
-
 # backup tilix config
 dconf dump /com/gexperts/Tilix/ > $BACKUP_DIR/$CONFIG_FILE/tilix.dconf
 
