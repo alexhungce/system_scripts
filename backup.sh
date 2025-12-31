@@ -31,12 +31,20 @@ mkdir -p "$BACKUP_DIR/$DOT_FILE"/{.config,gitconfig,vscode} "$BACKUP_DIR/$CONFIG
 log "creating application archives..."
 for dir in "${BACKUP_DIR_LIST[@]}"
 do
-	tar -zcf "$BACKUP_DIR/${dir}.tar.gz" ".${dir}"
+	if [ -d ".${dir}" ]; then
+		tar -zcf "$BACKUP_DIR/${dir}.tar.gz" ".${dir}"
+	else
+		warn "Directory .${dir} does not exist, skipping archive."
+	fi
 done
 
 for dir in "${BACKUP_DIR_SNAP_LIST[@]}"
 do
-	tar -zcf "$BACKUP_DIR/${dir}.tar.gz" "snap/${dir}"
+	if [ -d "snap/${dir}" ]; then
+		tar -zcf "$BACKUP_DIR/${dir}.tar.gz" "snap/${dir}"
+	else
+		warn "Directory snap/${dir} does not exist, skipping archive."
+	fi
 done
 
 log "copying dot files and directories..."
