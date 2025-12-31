@@ -11,7 +11,7 @@ VSCODE_DEST="$HOME/.config/Code/User"
 
 BACKUP_DIR_LIST=( pulsar mozilla )
 BACKUP_DIR_SNAP_LIST=( thunderbird )
-BACKUP_FILE_LIST=( msmtprc pwclientrc gnupg ssh vim sesame vimrc lnxpromote \
+BACKUP_FILE_LIST=( msmtprc pwclientrc gnupg ssh vim vimrc lnxpromote \
 		   bash_aliases bash_dev bash_igtops bash_kernelops bash_misc bash_servers )
 BACKUP_CONFIG_LIST=( ghostty mpv tilix zim )
 
