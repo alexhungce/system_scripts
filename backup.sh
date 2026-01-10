@@ -12,7 +12,7 @@ BACKUP_DIR_LIST=( pulsar mozilla )
 BACKUP_DIR_SNAP_LIST=( thunderbird )
 BACKUP_FILE_LIST=( msmtprc pwclientrc gnupg ssh vim vimrc lnxpromote \
 		   bash_aliases bash_dev bash_igtops bash_kernelops bash_misc bash_servers )
-BACKUP_CONFIG_LIST=( ghostty mpv tilix zim )
+BACKUP_CONFIG_DIR_LIST=( ghostty mpv tilix zim )
 
 # Helper functions
 log() {
@@ -54,9 +54,9 @@ do
 	[ -d ".${file}" ] && cp -frp ".${file}" "$BACKUP_DIR/$DOT_FILE"
 done
 
-for file in "${BACKUP_CONFIG_LIST[@]}"
+for dir in "${BACKUP_CONFIG_DIR_LIST[@]}"
 do
-	[ -d ".config/${file}" ] && cp -frp ".config/${file}" "$BACKUP_DIR/$DOT_FILE/.config/"
+	[ -d ".config/${dir}" ] && cp -frp ".config/${dir}" "$BACKUP_DIR/$DOT_FILE/.config/"
 done
 
 log "copying .gitconfig in all directories..."
