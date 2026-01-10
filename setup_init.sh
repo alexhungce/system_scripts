@@ -125,24 +125,17 @@ install_desktop_packages () {
 	log "Installing desktop packages..."
 
 	sudo apt install -y drm-info \
-			    deluge \
 			    fcitx5 \
 			    fcitx5-chinese-addons \
 			    fcitx5-chewing \
-			    ibus-chewing \
 			    linux-tools-generic \
 			    linux-tools-`uname -r` \
 			    meld \
 			    mpv \
-			    numix-gtk-theme \
-			    numix-icon-theme-circle \
 			    powertop \
 			    preload \
 			    remmina \
-			    simple-scan \
 			    thunderbird \
-			    tilix \
-			    ubuntu-restricted-addons \
 			    vlc \
 			    wl-clipboard \
 			    zim
@@ -226,8 +219,18 @@ configure_gnome () {
 	log "Configuring GNOME..."
 
 	# install applications for Gnome DE
-	sudo apt install -y network-manager-openvpn-gnome gnome-shell-extensions \
-			    gnome-shell-extension-manager gnome-tweaks gnome-weather
+	sudo apt install -y deluge \
+			    gnome-shell-extension-manager \
+			    gnome-shell-extensions \
+			    gnome-tweaks \
+			    gnome-weather \
+			    ibus-chewing \
+			    network-manager-openvpn-gnome \
+			    numix-gtk-theme \
+			    numix-icon-theme-circle \
+			    simple-scan \
+			    tilix \
+			    ubuntu-restricted-addons
 
 	# disable natural scrolling
 	gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
@@ -252,7 +255,10 @@ configure_kde () {
 	log "Configuring KDE..."
 
 	# install applications for KDE DE
-	sudo apt install -y yakuake
+	sudo apt install -y kubuntu-restricted-addons \
+			    qbittorrent \
+			    skanlite \
+			    yakuake
 }
 
 configure_system () {
