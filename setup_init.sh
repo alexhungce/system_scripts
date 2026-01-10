@@ -18,6 +18,10 @@ is_gnome() {
 	dpkg -l | grep -q gnome-shell
 }
 
+is_kde() {
+	dpkg -l | grep -q plasma-desktop
+}
+
 update_sources() {
 	log "Updating APT sources..."
 
@@ -244,6 +248,13 @@ configure_gnome () {
 	fi
 }
 
+configure_kde () {
+	log "Configuring KDE..."
+
+	# install applications for KDE DE
+	sudo apt install -y yakuake
+}
+
 configure_system () {
 	log "Applying system configs..."
 
@@ -266,6 +277,10 @@ configure_system () {
 
 	if is_gnome; then
 		configure_gnome
+	fi
+
+	if is_kde; then
+		configure_kde
 	fi
 
 	# setup for tilix
