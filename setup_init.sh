@@ -27,7 +27,7 @@ update_sources() {
 
 	local source_file="/etc/apt/sources.list.d/ubuntu.sources"
 	if [ -f "$source_file" ]; then
-		sudo sed -i 's/ca.archive.ubuntu.com/mirror.it.ubc.ca/g' "$source_file"
+		sudo sed -i 's/\(ca\.\)\?archive\.ubuntu\.com/mirror.it.ubc.ca/g' "$source_file"
 
 		if ! grep -q "deb-src" "$source_file"; then
 			sudo sed -i 's/deb/deb deb-src/g' "$source_file"
