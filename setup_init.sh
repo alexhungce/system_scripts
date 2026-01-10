@@ -14,6 +14,10 @@ is_desktop() {
 	dpkg -l | grep -q ubuntu-desktop
 }
 
+is_gnome() {
+	dpkg -l | grep -q gnome-shell
+}
+
 update_sources() {
 	log "Updating APT sources..."
 
@@ -260,7 +264,9 @@ configure_system () {
 	# create "Shared" and "tmp" directories
 	mkdir -p "$HOME/Shared" "$HOME/tmp"
 
-	configure_gnome
+	if is_gnome; then
+		configure_gnome
+	fi
 
 	# setup for tilix
 	if command -v tilix > /dev/null; then
