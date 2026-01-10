@@ -81,7 +81,6 @@ install_generic_packages () {
 	log "Installing generic packages..."
 
 	sudo apt install -y acpi \
-			    acpica-tools \
 			    avahi-daemon \
 			    bat \
 			    btop \
@@ -108,6 +107,7 @@ install_generic_packages () {
 			    python3-github \
 			    python3-gpg \
 			    python3-virtualenv \
+			    radeontop \
 			    screen \
 			    shellcheck \
 			    sshfs \
