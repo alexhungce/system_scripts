@@ -238,6 +238,9 @@ configure_gnome () {
 	# set wheel scroll
 	gsettings set org.gnome.desktop.peripherals.trackball scroll-wheel-emulation-button 8
 
+	# enable middle-click paste
+	gsettings set org.gnome.desktop.interface gtk-enable-primary-paste true
+
 	# hide desktop icons
 	if gsettings list-schemas | grep -q "org.gnome.shell.extensions.ding"; then
 		gsettings set org.gnome.shell.extensions.ding show-home false
