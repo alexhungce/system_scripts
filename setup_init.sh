@@ -133,7 +133,6 @@ install_desktop_packages () {
 			    meld \
 			    mpv \
 			    powertop \
-			    preload \
 			    remmina \
 			    thunderbird \
 			    vlc \
