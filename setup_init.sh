@@ -119,6 +119,9 @@ install_generic_packages () {
 
 	# install python packages
 	pipx install pwclient
+
+	# install uv
+	curl -LsSf https://astral.sh/uv/install.sh | sh
 }
 
 install_desktop_packages () {
