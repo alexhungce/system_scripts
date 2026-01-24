@@ -237,9 +237,6 @@ configure_gnome () {
 	# disable natural scrolling
 	gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
 
-	# set wheel scroll
-	gsettings set org.gnome.desktop.peripherals.trackball scroll-wheel-emulation-button 8
-
 	# enable middle-click paste
 	gsettings set org.gnome.desktop.interface gtk-enable-primary-paste true
 
