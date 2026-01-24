@@ -185,16 +185,6 @@ install_build_packages() {
 			    libelf-dev \
 			    libncurses5-dev \
 			    libssl-dev
-
-	# install packages for igt-gpu-tools
-	sudo apt -y install libdrm-dev \
-			    libkmod-dev \
-			    libproc2-dev \
-			    libdw-dev \
-			    libpixman-1-dev \
-			    libcairo2-dev \
-			    libudev-dev \
-			    meson
 }
 
 install_packages () {
