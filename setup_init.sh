@@ -222,10 +222,14 @@ configure_gnome () {
 			    ubuntu-restricted-addons
 
 	# disable natural scrolling
-	gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
+	if [ "$(gsettings get org.gnome.desktop.peripherals.touchpad natural-scroll)" != "false" ]; then
+		gsettings set org.gnome.desktop.peripherals.touchpad natural-scroll false
+	fi
 
 	# enable middle-click paste
-	gsettings set org.gnome.desktop.interface gtk-enable-primary-paste true
+	if [ "$(gsettings get org.gnome.desktop.interface gtk-enable-primary-paste)" != "true" ]; then
+		gsettings set org.gnome.desktop.interface gtk-enable-primary-paste true
+	fi
 
 	# hide desktop icons
 	if gsettings list-schemas | grep -q "org.gnome.shell.extensions.ding"; then
