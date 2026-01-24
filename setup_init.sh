@@ -159,7 +159,6 @@ install_desktop_minimal_packages () {
 			    linux-tools-generic \
 			    linux-tools-`uname -r` \
 			    meld \
-			    tilix \
 			    wl-clipboard
 }
 
@@ -226,12 +225,10 @@ configure_gnome () {
 			    gnome-shell-extensions \
 			    gnome-tweaks \
 			    gnome-weather \
-			    ibus-chewing \
 			    network-manager-openvpn-gnome \
 			    numix-gtk-theme \
 			    numix-icon-theme-circle \
 			    simple-scan \
-			    tilix \
 			    ubuntu-restricted-addons
 
 	# disable natural scrolling
