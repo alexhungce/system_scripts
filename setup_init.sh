@@ -77,6 +77,32 @@ install_ghostty() {
 	fi
 }
 
+install_kitty() {
+	if ! command -v kitty > /dev/null; then
+		log "Installing Kitty Terminal..."
+		curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+
+		# Desktop integration on Linux (official method on https://sw.kovidgoyal.net/kitty/binary/)
+		# Create symbolic links to add kitty and kitten to PATH
+		mkdir -p ~/.local/bin
+		ln -sf ~/.local/kitty.app/bin/kitty ~/.local/kitty.app/bin/kitten ~/.local/bin/
+
+		# Place the kitty.desktop file somewhere it can be found by the OS
+		mkdir -p ~/.local/share/applications/
+		cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/
+		cp ~/.local/kitty.app/share/applications/kitty-open.desktop ~/.local/share/applications/
+
+		# Update the paths to the kitty and its icon in the kitty.desktop file(s)
+		# more icons can be found @ https://sw.kovidgoyal.net/kitty/faq/
+		sed -i "s|Icon=kitty|Icon=$HOME/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop
+		sed -i "s|Exec=kitty|Exec=$HOME/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop
+
+		update-desktop-database ~/.local/share/applications/
+	else
+		log "Kitty Terminal is already installed."
+	fi
+}
+
 install_generic_packages () {
 	log "Installing generic packages..."
 
@@ -149,6 +175,7 @@ install_desktop_packages () {
 	# cd to /tmp for downloads and installations
 	pushd /tmp
 	install_ghostty
+	install_kitty
 	install_chrome
 	popd
 }
