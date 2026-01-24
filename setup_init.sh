@@ -131,6 +131,7 @@ install_desktop_packages () {
 			    fcitx5 \
 			    fcitx5-chinese-addons \
 			    fcitx5-chewing \
+			    fonts-jetbrains-mono \
 			    linux-tools-generic \
 			    linux-tools-`uname -r` \
 			    meld \
@@ -156,6 +157,7 @@ install_desktop_minimal_packages () {
 	log "Installing minimal desktop packages..."
 
 	sudo apt install -y drm-info \
+			    fonts-jetbrains-mono \
 			    linux-tools-generic \
 			    linux-tools-`uname -r` \
 			    meld \
