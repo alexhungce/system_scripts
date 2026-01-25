@@ -338,6 +338,19 @@ setup_git_repos() {
 	fi
 }
 
+setup_dev() {
+	log "Setting up Development Environment..."
+
+	echo "fs.inotify.max_user_watches = 524288" | sudo tee /etc/sysctl.d/60-inotify.conf
+	sudo sysctl -p /etc/sysctl.d/60-inotify.conf
+
+	# Configure ccache
+	ccache -M 50G
+	ccache --set-config=sloppiness=include_file_mtime,include_file_ctime	# clear with "ccache -c"
+	ccache --set-config=compression=true
+	ccache --set-config=compression_level=1
+}
+
 # assign default directories if there aren't any
 SOURCE_DIRECTORY=${1:-'src'}
 PERSONAL_DIRECTORY='personal'
@@ -356,5 +369,8 @@ configure_system
 
 # download source code
 setup_git_repos
+
+# setup for development environment
+setup_dev
 
 log "Setup Complete!"
