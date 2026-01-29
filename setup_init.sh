@@ -180,17 +180,6 @@ install_desktop_packages () {
 	popd
 }
 
-install_desktop_minimal_packages () {
-	log "Installing minimal desktop packages..."
-
-	sudo apt install -y drm-info \
-			    fonts-jetbrains-mono \
-			    linux-tools-generic \
-			    linux-tools-`uname -r` \
-			    meld \
-			    wl-clipboard
-}
-
 install_docker() {
 	log "Installing Docker..."
 
@@ -220,13 +209,7 @@ install_packages () {
 	install_generic_packages
 
 	if is_desktop ; then
-		# Get the system manufacturer
-		MANUFACTURER=$(sudo dmidecode -s system-manufacturer 2>/dev/null)
-		if [[ "$MANUFACTURER" == "AMD" ]]; then
-			install_desktop_minimal_packages
-		else
-			install_desktop_packages
-		fi
+		install_desktop_packages
 	else
 		install_docker
 	fi
