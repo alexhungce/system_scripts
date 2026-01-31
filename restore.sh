@@ -6,7 +6,7 @@ DOT_FILE=dot
 CONFIG_FILE=config
 DEST_DIR=$HOME
 
-VSCODE_BACKUP="$BACKUP_DIR/$DOT_FILE/vscode"
+VSCODE_BACKUP="$DOT_FILE/vscode"
 VSCODE_DEST="$HOME/.config/Code/User"
 
 BACKUP_DIR_LIST=( pulsar mozilla )
@@ -34,7 +34,7 @@ done
 
 for dir in "${BACKUP_DIR_SNAP_LIST[@]}"
 do
-	[ -e "${dir}.tar.gz" ] && tar -xf "${dir}.tar.gz" -C "$DEST_DIR/snap/"
+	[ -e "${dir}.tar.gz" ] && tar -xf "${dir}.tar.gz" -C "$DEST_DIR/"
 done
 
 log "copying dot files..."
