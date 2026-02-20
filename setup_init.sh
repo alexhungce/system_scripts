@@ -22,6 +22,16 @@ is_kde() {
 	dpkg -l | grep -q plasma-desktop
 }
 
+is_chassis_desktop() {
+	# Check chassis type (3=Desktop, 4=Low Profile Desktop, 6=Mini Tower, 7=Tower, 13=All in One, 35=Mini PC)
+	if [ -f /sys/class/dmi/id/chassis_type ]; then
+		case $(cat /sys/class/dmi/id/chassis_type) in
+			3|4|6|7|13|35) return 0 ;;
+		esac
+	fi
+	return 1
+}
+
 update_sources() {
 	log "Updating APT sources..."
 
@@ -281,6 +291,11 @@ configure_system () {
 	# desktop only below
 	if ! dpkg -l | grep -q ubuntu-desktop ; then
 		return
+	fi
+
+	if is_chassis_desktop; then
+		echo "options btusb enable_autosuspend=n" | sudo tee /etc/modprobe.d/btusb-autosuspend.conf
+		sudo update-initramfs -u
 	fi
 
 	# create "Shared" and "tmp" directories
