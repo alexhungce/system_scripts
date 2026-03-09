@@ -163,7 +163,8 @@ install_generic_packages () {
 install_desktop_packages () {
 	log "Installing desktop packages..."
 
-	sudo apt install -y drm-info \
+	sudo apt install -y chewing-editor \
+			    drm-info \
 			    fcitx5 \
 			    fcitx5-chinese-addons \
 			    fcitx5-chewing \
