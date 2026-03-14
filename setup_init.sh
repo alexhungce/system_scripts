@@ -164,6 +164,7 @@ install_desktop_packages () {
 	log "Installing desktop packages..."
 
 	sudo apt install -y chewing-editor \
+			    ddcutil \
 			    drm-info \
 			    fcitx5 \
 			    fcitx5-chinese-addons \
