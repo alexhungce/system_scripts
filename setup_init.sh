@@ -205,7 +205,8 @@ install_build_packages() {
 	log "Installing build packages..."
 
 	# install packages for linux kernel
-	sudo apt -y install bison \
+	sudo apt -y install b4 \
+			    bison \
 			    build-essential \
 			    ccache \
 			    debhelper-compat \
