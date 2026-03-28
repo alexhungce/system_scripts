@@ -70,6 +70,26 @@ install_chrome() {
 	fi
 }
 
+install_maestral() {
+	if ! command -v maestral > /dev/null; then
+		log "Installing Maestral Dropbox Client..."
+		sudo apt install python3-venv python3-pip python3-systemd -y
+
+		# Create a hidden directory for the virtual environment
+		python3 -m venv ~/.maestral-venv
+		# Install Maestral
+		~/.maestral-venv/bin/python3 -m pip install --upgrade maestral
+
+		sudo ln -sf ~/.maestral-venv/bin/maestral /usr/local/bin/maestral
+
+		log "1. Run 'maestral start' to link your Dropbox account."
+		log "2. Run 'maestral autostart -Y' to enable autostart on login."
+
+	else
+		log "Maestral Dropbox Client is already installed."
+	fi
+}
+
 install_ghostty() {
 	log "Installing Ghostty Terminal..."
 	curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh | sudo bash
@@ -189,6 +209,7 @@ install_desktop_packages () {
 	install_ghostty
 	install_kitty
 	install_chrome
+	install_maestral
 	popd
 }
 
