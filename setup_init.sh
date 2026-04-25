@@ -333,12 +333,6 @@ configure_system () {
 		configure_kde
 	fi
 
-	# setup for tilix
-	if command -v tilix > /dev/null; then
-		if [ ! -f /etc/profile.d/vte.sh ]; then
-			sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
-		fi
-	fi
 }
 
 setup_git_repos() {
