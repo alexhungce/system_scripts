@@ -131,6 +131,9 @@ install_kitty() {
 	else
 		log "Kitty Terminal is already installed."
 	fi
+
+	# set kitty as default terminal emulator
+	echo "kitty.desktop" > ~/.config/ubuntu-xdg-terminals.list
 }
 
 install_generic_packages () {
