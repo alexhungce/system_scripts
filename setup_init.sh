@@ -237,6 +237,7 @@ install_build_packages() {
 			    fakeroot \
 			    flex \
 			    gawk \
+			    lcov \
 			    libelf-dev \
 			    libncurses5-dev \
 			    libssl-dev
