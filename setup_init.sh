@@ -193,6 +193,7 @@ install_desktop_packages () {
 			    fcitx5-chinese-addons \
 			    fcitx5-chewing \
 			    fonts-jetbrains-mono \
+			    gpaste-2 \
 			    linux-tools-generic \
 			    linux-tools-`uname -r` \
 			    meld \
