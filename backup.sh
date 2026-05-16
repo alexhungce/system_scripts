@@ -12,7 +12,7 @@ BACKUP_DIR_LIST=( pulsar mozilla )
 BACKUP_DIR_SNAP_LIST=( thunderbird )
 BACKUP_FILE_LIST=( msmtprc pwclientrc gnupg ssh vim vimrc lnxpromote \
 		   bash_aliases bash_dev bash_igtops bash_kernelops bash_misc bash_servers )
-BACKUP_CONFIG_DIR_LIST=( Brave-Browser ghostty kitty mpv tilix zim )
+BACKUP_CONFIG_DIR_LIST=( Brave-Browser ghostty kitty mpv zim )
 BACKUP_CONFIG_KDE_LIST=( kglobalshortcutsrc kwinrc plasma-org.kde.plasma.desktop-appletsrc \
 			 plasmashellrc yakuakerc )
 
@@ -76,7 +76,6 @@ log "copying VSCode config..."
 [ -d "$VSCODE_CONFIG/snippets" ] && cp -r "$VSCODE_CONFIG/snippets" "$VSCODE_BACKUP/"
 
 log "copying application config files..."
-dconf dump /com/gexperts/Tilix/ > "$BACKUP_DIR/$CONFIG_FILE/tilix.dconf"
 
 log "finalizing backup archives..."
 cd "$BACKUP_DIR"

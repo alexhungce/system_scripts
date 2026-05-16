@@ -13,7 +13,7 @@ BACKUP_DIR_LIST=( pulsar mozilla )
 BACKUP_DIR_SNAP_LIST=( thunderbird )
 BACKUP_FILE_LIST=( msmtprc pwclientrc gnupg ssh vim vimrc lnxpromote \
 		   bash_aliases bash_dev bash_igtops bash_kernelops bash_misc bash_servers )
-BACKUP_CONFIG_DIR_LIST=( Brave-Browser ghostty kitty mpv tilix zim )
+BACKUP_CONFIG_DIR_LIST=( Brave-Browser ghostty kitty mpv zim )
 
 # Helper functions
 log() {
@@ -84,10 +84,6 @@ rm -rf "$DOT_FILE"
 
 log "copying config files..."
 tar -xf "$CONFIG_FILE.tar.gz"
-
-log "restoring tilix config..."
-dconf load /com/gexperts/Tilix/ < "$CONFIG_FILE/tilix.dconf"
-wget -qO $HOME"/.config/tilix/schemes/argonaut.json" https://git.io/v7QV5
 
 rm -rf "$CONFIG_FILE"
 
