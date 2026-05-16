@@ -1,9 +1,9 @@
 #!/bin/bash
 shopt -s -o nounset
 
-BACKUP_DIR=backup
-DOT_FILE=dot
-CONFIG_FILE=config
+BACKUP_DIR="backup"
+DOT_FILE="dot"
+CONFIG_FILE="config"
 DEST_DIR=$HOME
 
 VSCODE_BACKUP="$DOT_FILE/vscode"
@@ -24,7 +24,7 @@ warn() {
     echo -e "\033[1;33m[WARNING] $1\033[0m"
 }
 
-cd "$HOME/$BACKUP_DIR"
+cd "$HOME/$BACKUP_DIR" || exit
 
 log "extracting archives..."
 for dir in "${BACKUP_DIR_LIST[@]}"

@@ -1,9 +1,9 @@
 #!/bin/bash
 shopt -s -o nounset
 
-BACKUP_DIR=backup
-DOT_FILE=dot
-CONFIG_FILE=config
+BACKUP_DIR="backup"
+DOT_FILE="dot"
+CONFIG_FILE="config"
 
 VSCODE_BACKUP="$BACKUP_DIR/$DOT_FILE/vscode"
 VSCODE_CONFIG="$HOME/.config/Code/User"
@@ -26,7 +26,7 @@ warn() {
 }
 
 log "initializing backup directories..."
-cd "$HOME"
+cd "$HOME" || exit
 mkdir -p "$BACKUP_DIR/$DOT_FILE"/{.config,gitconfig,vscode} "$BACKUP_DIR/$CONFIG_FILE"
 
 # compress .atom, .mozilla and .thunderbird
@@ -78,7 +78,7 @@ log "copying VSCode config..."
 log "copying application config files..."
 
 log "finalizing backup archives..."
-cd "$BACKUP_DIR"
+cd "$BACKUP_DIR" || exit
 tar -zcf "$DOT_FILE.tar.gz" "$DOT_FILE"
 tar -zcf "$CONFIG_FILE.tar.gz" "$CONFIG_FILE"
 rm -rf "$DOT_FILE"
