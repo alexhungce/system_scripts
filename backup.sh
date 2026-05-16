@@ -56,6 +56,7 @@ do
 	[ -d ".${file}" ] && cp -frp ".${file}" "$BACKUP_DIR/$DOT_FILE"
 done
 
+log "copying application config files..."
 for dir in "${BACKUP_CONFIG_DIR_LIST[@]}"
 do
 	[ -d ".config/${dir}" ] && cp -frp ".config/${dir}" "$BACKUP_DIR/$DOT_FILE/.config/"
@@ -74,8 +75,6 @@ log "copying .gitconfig in all directories..."
 log "copying VSCode config..."
 [ -d "$VSCODE_CONFIG" ] && cp -fp "$VSCODE_CONFIG/"*.json "$VSCODE_BACKUP/"
 [ -d "$VSCODE_CONFIG/snippets" ] && cp -r "$VSCODE_CONFIG/snippets" "$VSCODE_BACKUP/"
-
-log "copying application config files..."
 
 log "finalizing backup archives..."
 cd "$BACKUP_DIR" || exit
