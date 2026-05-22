@@ -282,6 +282,11 @@ configure_gnome () {
 		gsettings set org.gnome.desktop.interface gtk-enable-primary-paste true
 	fi
 
+	# set tap-button-map - one finger = left click, two finger = right click, three finger = middle click
+	if [ "$(gsettings get org.gnome.desktop.peripherals.touchpad tap-button-map)" != "'lrm'" ]; then
+		gsettings set org.gnome.desktop.peripherals.touchpad tap-button-map lrm
+	fi
+
 	# hide desktop icons
 	if gsettings list-schemas | grep -q "org.gnome.shell.extensions.ding"; then
 		gsettings set org.gnome.shell.extensions.ding show-home false
