@@ -270,7 +270,8 @@ configure_gnome () {
 			    numix-gtk-theme \
 			    numix-icon-theme-circle \
 			    simple-scan \
-			    ubuntu-restricted-addons
+			    ubuntu-restricted-addons \
+			    usb-creator-gtk
 
 	# disable natural scrolling
 	if [ "$(gsettings get org.gnome.desktop.peripherals.touchpad natural-scroll)" != "false" ]; then
