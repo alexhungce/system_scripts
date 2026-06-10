@@ -234,11 +234,14 @@ install_build_packages() {
 			    bison \
 			    build-essential \
 			    ccache \
+			    clang  \
 			    debhelper-compat \
 			    fakeroot \
 			    flex \
 			    gawk \
 			    lcov \
+			    lld  \
+			    llvm \
 			    libelf-dev \
 			    libncurses5-dev \
 			    libssl-dev
