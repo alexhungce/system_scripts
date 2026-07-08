@@ -179,6 +179,14 @@ install_generic_packages () {
 	# install python packages
 	pipx install pwclient
 
+	# install vpn-slice
+	if ! command -v vpn-slice > /dev/null; then
+		sudo pipx install vpn-slice
+		sudo cp /root/.local/share/pipx/venvs/vpn-slice/bin/vpn-slice /usr/bin/vpn-slice
+	else
+		log "vpn-slice is already installed."
+	fi
+
 	# install uv
 	curl -LsSf https://astral.sh/uv/install.sh | sh
 }
