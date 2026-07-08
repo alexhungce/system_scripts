@@ -70,6 +70,20 @@ install_chrome() {
 	fi
 }
 
+install_brave() {
+	if ! command -v brave-browser > /dev/null; then
+		log "Installing Brave Browser..."
+		sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg \
+			https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+		sudo curl -fsSLo /etc/apt/sources.list.d/brave-browser-release.sources \
+			https://brave-browser-apt-release.s3.brave.com/brave-browser.sources
+		sudo apt update
+		sudo apt install -y brave-browser
+	else
+		log "Brave Browser is already installed."
+	fi
+}
+
 install_maestral() {
 	if ! command -v maestral > /dev/null; then
 		log "Installing Maestral Dropbox Client..."
@@ -221,6 +235,7 @@ install_desktop_packages () {
 	install_ghostty
 	install_kitty
 	install_chrome
+	install_brave
 	install_maestral
 	popd
 }
