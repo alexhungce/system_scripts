@@ -10,8 +10,7 @@ VSCODE_CONFIG="$HOME/.config/Code/User"
 
 BACKUP_DIR_LIST=( pulsar mozilla )
 BACKUP_DIR_SNAP_LIST=( thunderbird )
-BACKUP_FILE_LIST=( msmtprc pwclientrc gnupg ssh vim vimrc lnxpromote \
-		   bash_aliases bash_dev bash_igtops bash_kernelops bash_misc bash_servers )
+BACKUP_FILE_LIST=( msmtprc pwclientrc gnupg ssh vim vimrc lnxpromote )
 BACKUP_CONFIG_DIR_LIST=( BraveSoftware ghostty kitty mpv zim )
 BACKUP_CONFIG_KDE_LIST=( kglobalshortcutsrc kwinrc plasma-org.kde.plasma.desktop-appletsrc \
 			 plasmashellrc yakuakerc )
