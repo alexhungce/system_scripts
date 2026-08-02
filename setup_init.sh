@@ -10,6 +10,39 @@ warn() {
 	echo -e "\033[1;33m[WARNING] $1\033[0m"
 }
 
+setup_src_dir() {
+	local src_dir="$HOME/$SOURCE_DIRECTORY"
+	local dev_dir="$HOME/develop"
+
+	log "Setting up real dir 'develop', symlink 'src' -> 'develop'"
+
+	# Already applied?
+	if [ -L "$src_dir" ]; then
+		if [ "$(readlink "$src_dir")" = "develop" ]; then
+			log "Symlink already applied."
+		else
+			warn "'$src_dir' is a symlink to '$(readlink "$src_dir")', not 'develop'. Skipping."
+		fi
+		return
+	fi
+
+	# src exists as a real directory -> rename to develop
+	if [ -d "$src_dir" ]; then
+		if [ -e "$dev_dir" ]; then
+			warn "Both '$src_dir' and '$dev_dir' exist. Cannot rename automatically."
+			return 1
+		fi
+		log "Renaming '$src_dir' -> '$dev_dir'"
+		mv "$src_dir" "$dev_dir"
+	else
+		log "Creating '$dev_dir'"
+		mkdir -p "$dev_dir"
+	fi
+
+	log "Creating symlink '$src_dir' -> 'develop'"
+	ln -s develop "$src_dir"
+}
+
 is_desktop() {
 	dpkg -l | grep -q ubuntu-desktop
 }
@@ -411,6 +444,9 @@ setup_dev() {
 # assign default directories if there aren't any
 SOURCE_DIRECTORY=${1:-'src'}
 PERSONAL_DIRECTORY='personal'
+
+# workaround Crowdstrike restriction on 'src' directory
+setup_src_dir
 
 # update source list and source code list
 update_sources
