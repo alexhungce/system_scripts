@@ -216,6 +216,7 @@ install_generic_packages () {
 			    pipx \
 			    python3-github \
 			    python3-gpg \
+			    python3-q-text-as-data \
 			    python3-virtualenv \
 			    radeontop \
 			    screen \
