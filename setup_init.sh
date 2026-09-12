@@ -194,6 +194,7 @@ install_generic_packages () {
 			    avahi-daemon \
 			    bat \
 			    btop \
+			    codespell \
 			    crudini \
 			    curl \
 			    fd-find \
@@ -206,16 +207,20 @@ install_generic_packages () {
 			    iw \
 			    lm-sensors \
 			    libfuse-dev \
+			    libyaml-perl \
 			    nvme-cli \
 			    nvtop \
 			    openssh-server \
 			    openconnect \
 			    p7zip-full \
 			    pastebinit \
+			    perl-modules \
 			    plocate \
 			    pipx \
+			    python3-git \
 			    python3-github \
 			    python3-gpg \
+			    python3-ply \
 			    python3-q-text-as-data \
 			    python3-virtualenv \
 			    radeontop \
