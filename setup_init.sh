@@ -44,15 +44,15 @@ setup_src_dir() {
 }
 
 is_desktop() {
-	dpkg -l | grep -q ubuntu-desktop
+	dpkg -l | grep ubuntu-desktop > /dev/null
 }
 
 is_gnome() {
-	dpkg -l | grep -q gnome-shell
+	dpkg -l | grep gnome-shell > /dev/null
 }
 
 is_kde() {
-	dpkg -l | grep -q plasma-desktop
+	dpkg -l | grep plasma-desktop > /dev/null
 }
 
 is_chassis_desktop() {
@@ -287,7 +287,7 @@ install_docker() {
 	log "Installing Docker..."
 
 	sudo apt install -y docker.io
-	if ! groups "$USER" | grep -q docker; then
+	if ! groups "$USER" | grep docker > /dev/null; then
 		sudo usermod -aG docker "$USER"
 	fi
 }
@@ -358,13 +358,13 @@ configure_gnome () {
 	fi
 
 	# hide desktop icons
-	if gsettings list-schemas | grep -q "org.gnome.shell.extensions.ding"; then
+	if gsettings list-schemas | grep "org.gnome.shell.extensions.ding" > /dev/null; then
 		gsettings set org.gnome.shell.extensions.ding show-home false
 		gsettings set org.gnome.shell.extensions.ding show-trash false
 	fi
 
 	# hide dock icons
-	if gsettings list-schemas | grep -q "org.gnome.shell.extensions.dash-to-dock"; then
+	if gsettings list-schemas | grep "org.gnome.shell.extensions.dash-to-dock" > /dev/null; then
 		gsettings set org.gnome.shell.extensions.dash-to-dock show-trash false
 		gsettings set org.gnome.shell.extensions.dash-to-dock show-mounts false
 	fi
@@ -384,7 +384,7 @@ configure_system () {
 	log "Applying system configs..."
 
 	# disable crash report / apport
-	sudo rm /var/crash/*
+	sudo rm -f /var/crash/*
 	sudo sed -i -e s/^enabled\=1$/enabled\=0/ /etc/default/apport
 
 	# blacklist webcam for security
@@ -393,7 +393,7 @@ configure_system () {
 	fi
 
 	# desktop only below
-	if ! dpkg -l | grep -q ubuntu-desktop ; then
+	if ! is_desktop; then
 		return
 	fi
 

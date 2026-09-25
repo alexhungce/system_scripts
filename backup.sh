@@ -72,7 +72,12 @@ log "copying .gitconfig in all directories..."
 [ -e "src/personal/.gitconfig" ] && cp -fp "src/personal/.gitconfig" "$BACKUP_DIR/$DOT_FILE/gitconfig/.gitconfig_personal"
 
 log "copying VSCode config..."
-[ -d "$VSCODE_CONFIG" ] && cp -fp "$VSCODE_CONFIG/"*.json "$VSCODE_BACKUP/"
+for file in "$VSCODE_CONFIG/"*.json
+do
+	if [[ -f "$file" ]]; then
+		cp -fp "$file" "$VSCODE_BACKUP/"
+	fi
+done
 [ -d "$VSCODE_CONFIG/snippets" ] && cp -r "$VSCODE_CONFIG/snippets" "$VSCODE_BACKUP/"
 
 log "finalizing backup archives..."

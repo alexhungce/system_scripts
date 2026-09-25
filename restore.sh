@@ -75,7 +75,7 @@ if [ -d "$VSCODE_BACKUP" ]; then
 	[ -f "$VSCODE_BACKUP/keybindings.json" ] && cp -fp "$VSCODE_BACKUP/keybindings.json" "$VSCODE_DEST/"
 
 	if [ -d "$VSCODE_BACKUP/snippets" ]; then
-		cp -rfp "$VSCODE_BACKUP/snippets/"* "$VSCODE_DEST/snippets/"
+		cp -rfp "$VSCODE_BACKUP/snippets/." "$VSCODE_DEST/snippets/"
 	fi
 fi
 
