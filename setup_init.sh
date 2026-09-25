@@ -1,5 +1,5 @@
 #!/bin/bash
-shopt -s -o nounset
+set -euo pipefail
 
 # Helper Functions
 log() {

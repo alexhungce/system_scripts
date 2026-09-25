@@ -1,5 +1,5 @@
 #!/bin/bash
-shopt -s -o nounset
+set -euo pipefail
 
 BACKUP_DIR="backup"
 DOT_FILE="dot"
