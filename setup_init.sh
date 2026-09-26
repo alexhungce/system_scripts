@@ -203,6 +203,7 @@ install_generic_packages () {
 			    git-email \
 			    git-lfs \
 			    gitk \
+			    glow \
 			    htop \
 			    iw \
 			    lm-sensors \
